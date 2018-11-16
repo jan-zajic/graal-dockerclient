@@ -548,21 +548,23 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 		return cm;
 	}
 
-	private Registry<ConnectionSocketFactory> getSchemeRegistry(final Builder builder) {
-		final SSLConnectionSocketFactory https;
-		if (builder.dockerCertificatesStore == null) {
-			https = SSLConnectionSocketFactory.getSocketFactory();
-		} else {
-			https = new SSLConnectionSocketFactory(
-					builder.dockerCertificatesStore.sslContext(),
-						builder.dockerCertificatesStore.hostnameVerifier());
-		}
-
+	private Registry<ConnectionSocketFactory> getSchemeRegistry(final Builder builder) {		
 		final RegistryBuilder<ConnectionSocketFactory> registryBuilder = RegistryBuilder
-				.<ConnectionSocketFactory>create()
-					.register("https", https)
+				.<ConnectionSocketFactory>create()					
 					.register("http", PlainConnectionSocketFactory.getSocketFactory());
 
+		if(builder.uri.getScheme().equals("https")) {
+			final SSLConnectionSocketFactory https;
+			if (builder.dockerCertificatesStore == null) {
+				https = SSLConnectionSocketFactory.getSocketFactory();
+			} else {
+				https = new SSLConnectionSocketFactory(
+						builder.dockerCertificatesStore.sslContext(),
+							builder.dockerCertificatesStore.hostnameVerifier());
+			}
+			registryBuilder.register("https", https);
+		}
+		
 		if (builder.uri.getScheme().equals(UNIX_SCHEME)) {
 			registryBuilder.register(UNIX_SCHEME, new UnixConnectionSocketFactory(builder.uri));
 		}
