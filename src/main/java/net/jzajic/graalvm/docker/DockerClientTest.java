@@ -1,21 +1,19 @@
 package net.jzajic.graalvm.docker;
 
-import java.io.IOException;
-import java.nio.channels.SocketChannel;
+import java.util.List;
 
-import net.jzajic.graalvm.socket.UnixSocketAddress;
-import net.jzajic.graalvm.socket.channel.UnixSocketSelectorProvider;
+import net.jzajic.graalvm.client.DefaultDockerClient;
+import net.jzajic.graalvm.client.DockerClient;
+import net.jzajic.graalvm.client.messages.Container;
 
 public class DockerClientTest {
 	
 	public static void main(String[] args) {
-		try {
-			SocketChannel openSocketChannel = UnixSocketSelectorProvider.provider().openSocketChannel();
-			boolean conn = openSocketChannel.connect(new UnixSocketAddress("/var/run/docker.sock"));
-			System.out.println("Channel connected: "+conn);
-			openSocketChannel.close();
-		} catch (IOException e) {
-			e.printStackTrace();
+		try (DockerClient client = new DefaultDockerClient("unix:///var/run/docker.sock")) {			
+			List<Container> containers = client.listContainers();
+			for (Container container : containers) {
+				System.out.println(container.image);
+			}
 		}
 	}
 	
