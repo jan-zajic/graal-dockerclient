@@ -19,6 +19,6 @@
 	},
 	{
 		"name" : "net.jzajic.graalvm.client.messages.Image",
-		"allDeclaredFields": true,
+		"allDeclaredFields": true
 	}
 ]
