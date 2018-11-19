@@ -156,7 +156,7 @@ public class ReflectionJsonAnnotationProcessor extends AbstractProcessor {
 				DeclaredType declared = DeclaredType.class.cast(typeMirror);
 				Element asElement = declared.asElement();
 				TypeElement te = TypeElement.class.cast(asElement);
-				return te.getQualifiedName().toString();
+				return getClassName(te);
 			}
 		}
 	}
@@ -167,6 +167,10 @@ public class ReflectionJsonAnnotationProcessor extends AbstractProcessor {
         e = e.getEnclosingElement();
     }
 		TypeElement te = TypeElement.class.cast(e);
+		return getClassName(te);
+	}
+	
+	private String getClassName(TypeElement te) {
 		String className;
 		if(te.getNestingKind() == NestingKind.MEMBER) {
 			StringBuilder nesting = new StringBuilder();
