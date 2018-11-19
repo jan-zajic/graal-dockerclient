@@ -103,7 +103,8 @@ public class ReflectionJsonAnnotationProcessor extends AbstractProcessor {
 	private void declareField(List<Map> classList, Element annotatedElement) {
 		Map jsonObject = new HashMap<>();
 		jsonObject.put("name", annotatedElement.getSimpleName().toString());
-		jsonObject.put("allowWrite", annotatedElement.getModifiers().contains(Modifier.PUBLIC));
+		//TODO: enable in future versions?
+		//jsonObject.put("allowWrite", annotatedElement.getModifiers().contains(Modifier.PUBLIC));
 		classList.add(jsonObject);
 	}
 
