@@ -164,7 +164,6 @@ public class Network {
     
     private final String name;
 
-    @JsonCreator
     Type(final String name) {
       this.name = name;
     }
@@ -173,5 +172,15 @@ public class Network {
     public String getName() {
       return name;
     }
+    
+    @JsonCreator
+    public static Type fromName(String name) {
+    	for (Type typ : Type.values()) {
+				if(typ.name.equals(name))
+					return typ;
+			}
+    	return null;
+    }
+    
   }
 }
