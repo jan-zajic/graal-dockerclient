@@ -99,7 +99,6 @@ public class PortConfig {
 
     private final String name;
 
-    @JsonCreator
     PortConfigPublishMode(final String name) {
       this.name = name;
     }
@@ -108,5 +107,15 @@ public class PortConfig {
     public String getName() {
       return name;
     }
+    
+    @JsonCreator
+    public static PortConfigPublishMode fromName(String name) {
+    	for (PortConfigPublishMode typ : PortConfigPublishMode.values()) {
+				if(typ.name.equals(name))
+					return typ;
+			}
+    	return null;
+    }
+    
   }
 }
