@@ -118,7 +118,7 @@ public class ReflectionJsonAnnotationProcessor extends AbstractProcessor {
 
 	private void declareConstructor(List<Map> classList, Element annotatedElement) {
 		Map jsonObject = new HashMap<>();
-		jsonObject.put("<init>", annotatedElement.getSimpleName().toString());
+		jsonObject.put("name", "<init>");
 		declareParameters(jsonObject, annotatedElement);
 		classList.add(jsonObject);
 	}
