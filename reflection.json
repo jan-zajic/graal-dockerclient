@@ -16,9 +16,5 @@
 	{
 		"name" : "java.util.ArrayList",
 		"allPublicConstructors" : true
-	},
-	{
-		"name" : "net.jzajic.graalvm.client.messages.Image",
-		"allDeclaredFields": true
 	}
 ]

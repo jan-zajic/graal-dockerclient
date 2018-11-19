@@ -61,6 +61,34 @@
 						<source>${maven.compiler.source}</source>
 						<target>${maven.compiler.target}</target>
 					</configuration>
+					<executions>
+						<execution>
+							<id>compile-annotation-processor</id>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>compile</goal>
+							</goals>
+							<configuration>
+								<includes>
+									<include>net/jzajic/graalvm/client/annotation/*.java</include>
+								</includes>
+							</configuration>
+						</execution>
+						<execution>
+							<id>default-compile</id> <!-- using an id of default-compile will override the default execution -->
+							<phase>compile</phase>
+							<goals>
+								<goal>compile</goal>
+							</goals>
+							<configuration>
+								<annotationProcessors>
+									<annotationProcessor>
+										net.jzajic.graalvm.client.annotation.ReflectionJsonAnnotationProcessor
+									</annotationProcessor>
+								</annotationProcessors>
+							</configuration>
+						</execution>
+					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
