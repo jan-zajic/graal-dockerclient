@@ -20,6 +20,7 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
 import javax.lang.model.element.ExecutableElement;
 import javax.lang.model.element.Modifier;
+import javax.lang.model.element.NestingKind;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.element.VariableElement;
 import javax.lang.model.type.ArrayType;
@@ -166,7 +167,26 @@ public class ReflectionJsonAnnotationProcessor extends AbstractProcessor {
         e = e.getEnclosingElement();
     }
 		TypeElement te = TypeElement.class.cast(e);
-		String className = te.getQualifiedName().toString();
+		String className;
+		if(te.getNestingKind() == NestingKind.MEMBER) {
+			StringBuilder nesting = new StringBuilder();
+			nesting.append("$"+te.getSimpleName().toString());
+			
+			Element parent = te.getEnclosingElement();
+			TypeElement tp = TypeElement.class.cast(parent);
+			
+			while(tp.getNestingKind() != NestingKind.TOP_LEVEL) {
+				nesting.insert(0, "$"+tp.getSimpleName().toString());
+				parent = te.getEnclosingElement();
+				tp = TypeElement.class.cast(parent);
+			}
+			nesting.insert(0, tp.getQualifiedName().toString());
+			className =  nesting.toString();
+		} else if (te.getNestingKind() == NestingKind.TOP_LEVEL){
+			className = te.getQualifiedName().toString();
+		} else {
+			return null;
+		}
 		classes.add(className);
 		return className;
 	}

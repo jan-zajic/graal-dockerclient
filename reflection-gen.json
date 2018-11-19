@@ -5,25 +5,18 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.Network",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "version"
   }, {
-    "allowWrite" : true,
     "name" : "createdAt"
   }, {
-    "allowWrite" : true,
     "name" : "updatedAt"
   }, {
-    "allowWrite" : true,
     "name" : "spec"
   }, {
-    "allowWrite" : true,
     "name" : "driverState"
   }, {
-    "allowWrite" : true,
     "name" : "ipamOptions"
   } ]
 }, {
@@ -33,28 +26,20 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.ContainerMount",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "type"
   }, {
-    "allowWrite" : true,
     "name" : "name"
   }, {
-    "allowWrite" : true,
     "name" : "source"
   }, {
-    "allowWrite" : true,
     "name" : "destination"
   }, {
-    "allowWrite" : true,
     "name" : "driver"
   }, {
-    "allowWrite" : true,
     "name" : "mode"
   }, {
-    "allowWrite" : true,
     "name" : "rw"
   }, {
-    "allowWrite" : true,
     "name" : "propagation"
   } ]
 }, {
@@ -64,27 +49,7 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.EncryptionConfig",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "autoLockManagers"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.util.Date", "java.util.Date", "java.lang.Long", "java.lang.String" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.ContainerState.HealthLog",
-  "fields" : [ {
-    "allowWrite" : true,
-    "name" : "start"
-  }, {
-    "allowWrite" : true,
-    "name" : "end"
-  }, {
-    "allowWrite" : true,
-    "name" : "exitCode"
-  }, {
-    "allowWrite" : true,
-    "name" : "output"
   } ]
 }, {
   "methods" : [ {
@@ -93,25 +58,18 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.NetworkSpec",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "name"
   }, {
-    "allowWrite" : true,
     "name" : "labels"
   }, {
-    "allowWrite" : true,
     "name" : "driverConfiguration"
   }, {
-    "allowWrite" : true,
     "name" : "ipv6Enabled"
   }, {
-    "allowWrite" : true,
     "name" : "internal"
   }, {
-    "allowWrite" : true,
     "name" : "attachable"
   }, {
-    "allowWrite" : true,
     "name" : "ipamOptions"
   } ]
 }, {
@@ -121,12 +79,15 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.ExecCreation",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "warnings"
   } ]
+}, {
+  "methods" : [ {
+    "name" : "getValue"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.swarm.EndpointSpec$Mode"
 }, {
   "methods" : [ {
     "parameterTypes" : [ "java.lang.String", "java.util.Map", "java.lang.String", "java.util.List", "java.util.List", "java.util.List", "java.lang.String", "java.lang.String", "java.util.List", "java.lang.Boolean", "java.util.List", "java.lang.Long", "net.jzajic.graalvm.client.messages.ContainerConfig.Healthcheck", "java.util.List", "java.util.List", "net.jzajic.graalvm.client.messages.swarm.DnsConfig", "java.util.List" ],
@@ -134,55 +95,38 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.ContainerSpec",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "image"
   }, {
-    "allowWrite" : true,
     "name" : "hostname"
   }, {
-    "allowWrite" : true,
     "name" : "labels"
   }, {
-    "allowWrite" : true,
     "name" : "command"
   }, {
-    "allowWrite" : true,
     "name" : "args"
   }, {
-    "allowWrite" : true,
     "name" : "env"
   }, {
-    "allowWrite" : true,
     "name" : "dir"
   }, {
-    "allowWrite" : true,
     "name" : "user"
   }, {
-    "allowWrite" : true,
     "name" : "groups"
   }, {
-    "allowWrite" : true,
     "name" : "tty"
   }, {
-    "allowWrite" : true,
     "name" : "mounts"
   }, {
-    "allowWrite" : true,
     "name" : "stopGracePeriod"
   }, {
-    "allowWrite" : true,
     "name" : "healthcheck"
   }, {
-    "allowWrite" : true,
     "name" : "hosts"
   }, {
-    "allowWrite" : true,
     "name" : "secrets"
   }, {
-    "allowWrite" : true,
     "name" : "configs"
   }, {
-    "allowWrite" : true,
     "name" : "dnsConfig"
   } ]
 }, {
@@ -192,11 +136,22 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.TopResults",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "titles"
   }, {
-    "allowWrite" : true,
     "name" : "processes"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.lang.String", "java.util.Map", "java.lang.String" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.swarm.ConfigSpec",
+  "fields" : [ {
+    "name" : "name"
+  }, {
+    "name" : "labels"
+  }, {
+    "name" : "data"
   } ]
 }, {
   "methods" : [ {
@@ -205,23 +160,7 @@
     "parameterTypes" : [ "java.lang.String" ],
     "<init>" : "<init>"
   } ],
-  "name" : "net.jzajic.graalvm.client.messages.swarm.PortConfig.PortConfigPublishMode"
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.lang.String", "java.util.Map", "java.lang.String" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.swarm.ConfigSpec",
-  "fields" : [ {
-    "allowWrite" : true,
-    "name" : "name"
-  }, {
-    "allowWrite" : true,
-    "name" : "labels"
-  }, {
-    "allowWrite" : true,
-    "name" : "data"
-  } ]
+  "name" : "net.jzajic.graalvm.client.messages.Event$Type"
 }, {
   "methods" : [ {
     "parameterTypes" : [ "java.lang.String", "java.lang.String", "java.lang.String", "java.util.List", "java.util.List", "java.lang.Long", "java.lang.Long", "java.util.Map" ],
@@ -229,28 +168,20 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.Image",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "created"
   }, {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "parentId"
   }, {
-    "allowWrite" : true,
     "name" : "repoTags"
   }, {
-    "allowWrite" : true,
     "name" : "repoDigests"
   }, {
-    "allowWrite" : true,
     "name" : "size"
   }, {
-    "allowWrite" : true,
     "name" : "virtualSize"
   }, {
-    "allowWrite" : true,
     "name" : "labels"
   } ]
 }, {
@@ -260,16 +191,12 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.SwarmJoin",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "listenAddr"
   }, {
-    "allowWrite" : true,
     "name" : "advertiseAddr"
   }, {
-    "allowWrite" : true,
     "name" : "remoteAddrs"
   }, {
-    "allowWrite" : true,
     "name" : "joinToken"
   } ]
 }, {
@@ -279,11 +206,20 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.NetworkCreation",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "warnings"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.lang.String", "java.lang.Integer" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.HostConfig$RestartPolicy",
+  "fields" : [ {
+    "name" : "name"
+  }, {
+    "name" : "maxRetryCount"
   } ]
 }, {
   "methods" : [ {
@@ -292,19 +228,14 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.RaftConfig",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "snapshotInterval"
   }, {
-    "allowWrite" : true,
     "name" : "keepOldSnapshots"
   }, {
-    "allowWrite" : true,
     "name" : "logEntriesForSlowFollowers"
   }, {
-    "allowWrite" : true,
     "name" : "electionTick"
   }, {
-    "allowWrite" : true,
     "name" : "heartbeatTick"
   } ]
 }, {
@@ -314,16 +245,12 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.UpdateStatus",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "state"
   }, {
-    "allowWrite" : true,
     "name" : "startedAt"
   }, {
-    "allowWrite" : true,
     "name" : "completedAt"
   }, {
-    "allowWrite" : true,
     "name" : "message"
   } ]
 }, {
@@ -333,10 +260,8 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.JoinTokens",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "worker"
   }, {
-    "allowWrite" : true,
     "name" : "manager"
   } ]
 }, {
@@ -346,10 +271,8 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.NodeStatus",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "state"
   }, {
-    "allowWrite" : true,
     "name" : "addr"
   } ]
 }, {
@@ -359,16 +282,12 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.SwarmInit",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "listenAddr"
   }, {
-    "allowWrite" : true,
     "name" : "advertiseAddr"
   }, {
-    "allowWrite" : true,
     "name" : "forceNewCluster"
   }, {
-    "allowWrite" : true,
     "name" : "swarmSpec"
   } ]
 }, {
@@ -378,27 +297,9 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.CaConfig",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "nodeCertExpiry"
   }, {
-    "allowWrite" : true,
     "name" : "externalCas"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.lang.String", "java.lang.Integer", "java.util.List" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.ContainerState.Health",
-  "fields" : [ {
-    "allowWrite" : true,
-    "name" : "status"
-  }, {
-    "allowWrite" : true,
-    "name" : "failingStreak"
-  }, {
-    "allowWrite" : true,
-    "name" : "log"
   } ]
 }, {
   "methods" : [ {
@@ -407,13 +308,10 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.IpamConfig",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "subnet"
   }, {
-    "allowWrite" : true,
     "name" : "range"
   }, {
-    "allowWrite" : true,
     "name" : "gateway"
   } ]
 }, {
@@ -423,123 +321,21 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.Version",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "apiVersion"
   }, {
-    "allowWrite" : true,
     "name" : "arch"
   }, {
-    "allowWrite" : true,
     "name" : "buildTime"
   }, {
-    "allowWrite" : true,
     "name" : "gitCommit"
   }, {
-    "allowWrite" : true,
     "name" : "goVersion"
   }, {
-    "allowWrite" : true,
     "name" : "kernelVersion"
   }, {
-    "allowWrite" : true,
     "name" : "os"
   }, {
-    "allowWrite" : true,
     "name" : "version"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.math.BigInteger", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.MemoryStats.Stats",
-  "fields" : [ {
-    "allowWrite" : true,
-    "name" : "activeFile"
-  }, {
-    "allowWrite" : true,
-    "name" : "totalActiveFile"
-  }, {
-    "allowWrite" : true,
-    "name" : "inactiveFile"
-  }, {
-    "allowWrite" : true,
-    "name" : "totalInactiveFile"
-  }, {
-    "allowWrite" : true,
-    "name" : "cache"
-  }, {
-    "allowWrite" : true,
-    "name" : "totalCache"
-  }, {
-    "allowWrite" : true,
-    "name" : "activeAnon"
-  }, {
-    "allowWrite" : true,
-    "name" : "totalActiveAnon"
-  }, {
-    "allowWrite" : true,
-    "name" : "inactiveAnon"
-  }, {
-    "allowWrite" : true,
-    "name" : "totalInactiveAnon"
-  }, {
-    "allowWrite" : true,
-    "name" : "hierarchicalMemoryLimit"
-  }, {
-    "allowWrite" : true,
-    "name" : "mappedFile"
-  }, {
-    "allowWrite" : true,
-    "name" : "totalMappedFile"
-  }, {
-    "allowWrite" : true,
-    "name" : "pgmajfault"
-  }, {
-    "allowWrite" : true,
-    "name" : "totalPgmajfault"
-  }, {
-    "allowWrite" : true,
-    "name" : "pgpgin"
-  }, {
-    "allowWrite" : true,
-    "name" : "totalPgpgin"
-  }, {
-    "allowWrite" : true,
-    "name" : "pgpgout"
-  }, {
-    "allowWrite" : true,
-    "name" : "totalPgpgout"
-  }, {
-    "allowWrite" : true,
-    "name" : "pgfault"
-  }, {
-    "allowWrite" : true,
-    "name" : "totalPgfault"
-  }, {
-    "allowWrite" : true,
-    "name" : "rss"
-  }, {
-    "allowWrite" : true,
-    "name" : "totalRss"
-  }, {
-    "allowWrite" : true,
-    "name" : "rssHuge"
-  }, {
-    "allowWrite" : true,
-    "name" : "totalRssHuge"
-  }, {
-    "allowWrite" : true,
-    "name" : "unevictable"
-  }, {
-    "allowWrite" : true,
-    "name" : "totalUnevictable"
-  }, {
-    "allowWrite" : true,
-    "name" : "totalWriteback"
-  }, {
-    "allowWrite" : true,
-    "name" : "writeback"
   } ]
 }, {
   "methods" : [ {
@@ -548,30 +344,9 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.ResourceRequirements",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "limits"
   }, {
-    "allowWrite" : true,
     "name" : "reservations"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.ContainerInfo.Node",
-  "fields" : [ {
-    "allowWrite" : true,
-    "name" : "id"
-  }, {
-    "allowWrite" : true,
-    "name" : "ip"
-  }, {
-    "allowWrite" : true,
-    "name" : "addr"
-  }, {
-    "allowWrite" : true,
-    "name" : "name"
   } ]
 }, {
   "methods" : [ {
@@ -580,13 +355,10 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.ManagerStatus",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "leader"
   }, {
-    "allowWrite" : true,
     "name" : "reachability"
   }, {
-    "allowWrite" : true,
     "name" : "addr"
   } ]
 }, {
@@ -596,10 +368,8 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.Resources",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "nanoCpus"
   }, {
-    "allowWrite" : true,
     "name" : "memoryBytes"
   } ]
 }, {
@@ -609,13 +379,10 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.UpdateConfig",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "parallelism"
   }, {
-    "allowWrite" : true,
     "name" : "delay"
   }, {
-    "allowWrite" : true,
     "name" : "failureAction"
   } ]
 }, {
@@ -625,10 +392,8 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.LogConfig",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "logType"
   }, {
-    "allowWrite" : true,
     "name" : "logOptions"
   } ]
 }, {
@@ -638,28 +403,20 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.Volume",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "name"
   }, {
-    "allowWrite" : true,
     "name" : "driver"
   }, {
-    "allowWrite" : true,
     "name" : "driverOpts"
   }, {
-    "allowWrite" : true,
     "name" : "options"
   }, {
-    "allowWrite" : true,
     "name" : "labels"
   }, {
-    "allowWrite" : true,
     "name" : "mountpoint"
   }, {
-    "allowWrite" : true,
     "name" : "scope"
   }, {
-    "allowWrite" : true,
     "name" : "status"
   } ]
 }, {
@@ -669,55 +426,38 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.NetworkSettings",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "ipAddress"
   }, {
-    "allowWrite" : true,
     "name" : "ipPrefixLen"
   }, {
-    "allowWrite" : true,
     "name" : "gateway"
   }, {
-    "allowWrite" : true,
     "name" : "bridge"
   }, {
-    "allowWrite" : true,
     "name" : "portMapping"
   }, {
-    "allowWrite" : true,
     "name" : "ports"
   }, {
-    "allowWrite" : true,
     "name" : "macAddress"
   }, {
-    "allowWrite" : true,
     "name" : "networks"
   }, {
-    "allowWrite" : true,
     "name" : "endpointId"
   }, {
-    "allowWrite" : true,
     "name" : "sandboxId"
   }, {
-    "allowWrite" : true,
     "name" : "sandboxKey"
   }, {
-    "allowWrite" : true,
     "name" : "hairpinMode"
   }, {
-    "allowWrite" : true,
     "name" : "linkLocalIPv6Address"
   }, {
-    "allowWrite" : true,
     "name" : "linkLocalIPv6PrefixLen"
   }, {
-    "allowWrite" : true,
     "name" : "globalIPv6Address"
   }, {
-    "allowWrite" : true,
     "name" : "globalIPv6PrefixLen"
   }, {
-    "allowWrite" : true,
     "name" : "ipv6Gateway"
   } ]
 }, {
@@ -727,7 +467,6 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.SecretCreateResponse",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "id"
   } ]
 }, {
@@ -737,13 +476,10 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.DnsConfig",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "nameServers"
   }, {
-    "allowWrite" : true,
     "name" : "search"
   }, {
-    "allowWrite" : true,
     "name" : "options"
   } ]
 }, {
@@ -753,16 +489,12 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.NodeSpec",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "name"
   }, {
-    "allowWrite" : true,
     "name" : "labels"
   }, {
-    "allowWrite" : true,
     "name" : "role"
   }, {
-    "allowWrite" : true,
     "name" : "availability"
   } ]
 }, {
@@ -772,13 +504,10 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.Device",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "pathOnHost"
   }, {
-    "allowWrite" : true,
     "name" : "pathInContainer"
   }, {
-    "allowWrite" : true,
     "name" : "cgroupPermissions"
   } ]
 }, {
@@ -788,14 +517,76 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.ProgressDetail",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "current"
   }, {
-    "allowWrite" : true,
     "name" : "start"
   }, {
-    "allowWrite" : true,
     "name" : "total"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.math.BigInteger", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.MemoryStats$Stats",
+  "fields" : [ {
+    "name" : "activeFile"
+  }, {
+    "name" : "totalActiveFile"
+  }, {
+    "name" : "inactiveFile"
+  }, {
+    "name" : "totalInactiveFile"
+  }, {
+    "name" : "cache"
+  }, {
+    "name" : "totalCache"
+  }, {
+    "name" : "activeAnon"
+  }, {
+    "name" : "totalActiveAnon"
+  }, {
+    "name" : "inactiveAnon"
+  }, {
+    "name" : "totalInactiveAnon"
+  }, {
+    "name" : "hierarchicalMemoryLimit"
+  }, {
+    "name" : "mappedFile"
+  }, {
+    "name" : "totalMappedFile"
+  }, {
+    "name" : "pgmajfault"
+  }, {
+    "name" : "totalPgmajfault"
+  }, {
+    "name" : "pgpgin"
+  }, {
+    "name" : "totalPgpgin"
+  }, {
+    "name" : "pgpgout"
+  }, {
+    "name" : "totalPgpgout"
+  }, {
+    "name" : "pgfault"
+  }, {
+    "name" : "totalPgfault"
+  }, {
+    "name" : "rss"
+  }, {
+    "name" : "totalRss"
+  }, {
+    "name" : "rssHuge"
+  }, {
+    "name" : "totalRssHuge"
+  }, {
+    "name" : "unevictable"
+  }, {
+    "name" : "totalUnevictable"
+  }, {
+    "name" : "totalWriteback"
+  }, {
+    "name" : "writeback"
   } ]
 }, {
   "methods" : [ {
@@ -804,19 +595,14 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.ImageSearchResult",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "description"
   }, {
-    "allowWrite" : true,
     "name" : "official"
   }, {
-    "allowWrite" : true,
     "name" : "automated"
   }, {
-    "allowWrite" : true,
     "name" : "name"
   }, {
-    "allowWrite" : true,
     "name" : "starCount"
   } ]
 }, {
@@ -826,7 +612,6 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.ContainerExit",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "statusCode"
   } ]
 }, {
@@ -836,11 +621,26 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.mount.Driver",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "name"
   }, {
-    "allowWrite" : true,
     "name" : "options"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.Network$Container",
+  "fields" : [ {
+    "name" : "name"
+  }, {
+    "name" : "endpointId"
+  }, {
+    "name" : "macAddress"
+  }, {
+    "name" : "ipv4Address"
+  }, {
+    "name" : "ipv6Address"
   } ]
 }, {
   "methods" : [ {
@@ -849,14 +649,22 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.IpamConfig",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "subnet"
   }, {
-    "allowWrite" : true,
     "name" : "ipRange"
   }, {
-    "allowWrite" : true,
     "name" : "gateway"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.util.Map", "java.util.List" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.Info$RegistryConfig",
+  "fields" : [ {
+    "name" : "indexConfigs"
+  }, {
+    "name" : "insecureRegistryCidrs"
   } ]
 }, {
   "methods" : [ {
@@ -865,16 +673,12 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.Descriptor",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "mediaType"
   }, {
-    "allowWrite" : true,
     "name" : "digest"
   }, {
-    "allowWrite" : true,
     "name" : "size"
   }, {
-    "allowWrite" : true,
     "name" : "urls"
   } ]
 }, {
@@ -884,29 +688,32 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.NodeInfo",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "version"
   }, {
-    "allowWrite" : true,
     "name" : "createdAt"
   }, {
-    "allowWrite" : true,
     "name" : "updatedAt"
   }, {
-    "allowWrite" : true,
     "name" : "spec"
   }, {
-    "allowWrite" : true,
     "name" : "description"
   }, {
-    "allowWrite" : true,
     "name" : "status"
   }, {
-    "allowWrite" : true,
     "name" : "managerStatus"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.lang.String", "java.util.Map" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.Event$Actor",
+  "fields" : [ {
+    "name" : "id"
+  }, {
+    "name" : "attributes"
   } ]
 }, {
   "methods" : [ {
@@ -915,16 +722,12 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.RestartPolicy",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "condition"
   }, {
-    "allowWrite" : true,
     "name" : "delay"
   }, {
-    "allowWrite" : true,
     "name" : "maxAttempts"
   }, {
-    "allowWrite" : true,
     "name" : "window"
   } ]
 }, {
@@ -934,7 +737,6 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.ConfigCreateResponse",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "id"
   } ]
 }, {
@@ -944,13 +746,10 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.ExternalCa",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "protocol"
   }, {
-    "allowWrite" : true,
     "name" : "url"
   }, {
-    "allowWrite" : true,
     "name" : "options"
   } ]
 }, {
@@ -960,25 +759,18 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.Service",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "version"
   }, {
-    "allowWrite" : true,
     "name" : "createdAt"
   }, {
-    "allowWrite" : true,
     "name" : "updatedAt"
   }, {
-    "allowWrite" : true,
     "name" : "spec"
   }, {
-    "allowWrite" : true,
     "name" : "endpoint"
   }, {
-    "allowWrite" : true,
     "name" : "updateStatus"
   } ]
 }, {
@@ -988,28 +780,20 @@
   } ],
   "name" : "net.jzajic.graalvm.client.DockerConfig",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "credHelpers"
   }, {
-    "allowWrite" : true,
     "name" : "auths"
   }, {
-    "allowWrite" : true,
     "name" : "httpHeaders"
   }, {
-    "allowWrite" : true,
     "name" : "credsStore"
   }, {
-    "allowWrite" : true,
     "name" : "detachKeys"
   }, {
-    "allowWrite" : true,
     "name" : "stackOrchestrator"
   }, {
-    "allowWrite" : true,
     "name" : "psFormat"
   }, {
-    "allowWrite" : true,
     "name" : "imagesFormat"
   } ]
 }, {
@@ -1019,22 +803,16 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.ImageHistory",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "created"
   }, {
-    "allowWrite" : true,
     "name" : "createdBy"
   }, {
-    "allowWrite" : true,
     "name" : "tags"
   }, {
-    "allowWrite" : true,
     "name" : "size"
   }, {
-    "allowWrite" : true,
     "name" : "comment"
   } ]
 }, {
@@ -1044,57 +822,31 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.Task",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "version"
   }, {
-    "allowWrite" : true,
     "name" : "createdAt"
   }, {
-    "allowWrite" : true,
     "name" : "updatedAt"
   }, {
-    "allowWrite" : true,
     "name" : "name"
   }, {
-    "allowWrite" : true,
     "name" : "labels"
   }, {
-    "allowWrite" : true,
     "name" : "spec"
   }, {
-    "allowWrite" : true,
     "name" : "serviceId"
   }, {
-    "allowWrite" : true,
     "name" : "slot"
   }, {
-    "allowWrite" : true,
     "name" : "nodeId"
   }, {
-    "allowWrite" : true,
     "name" : "status"
   }, {
-    "allowWrite" : true,
     "name" : "desiredState"
   }, {
-    "allowWrite" : true,
     "name" : "networkAttachments"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.util.List", "java.util.List" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.Info.Plugins",
-  "fields" : [ {
-    "allowWrite" : true,
-    "name" : "volumes"
-  }, {
-    "allowWrite" : true,
-    "name" : "networks"
   } ]
 }, {
   "methods" : [ {
@@ -1103,30 +855,11 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.ConfigBind",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "file"
   }, {
-    "allowWrite" : true,
     "name" : "configId"
   }, {
-    "allowWrite" : true,
     "name" : "configName"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.lang.String", "java.lang.Long", "java.lang.Long" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.HostConfig.Ulimit",
-  "fields" : [ {
-    "allowWrite" : true,
-    "name" : "name"
-  }, {
-    "allowWrite" : true,
-    "name" : "soft"
-  }, {
-    "allowWrite" : true,
-    "name" : "hard"
   } ]
 }, {
   "methods" : [ {
@@ -1135,10 +868,8 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.ContainerChange",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "path"
   }, {
-    "allowWrite" : true,
     "name" : "kind"
   } ]
 }, {
@@ -1148,8 +879,16 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.Version",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "index"
+  } ]
+}, {
+  "name" : "net.jzajic.graalvm.client.messages.EndpointConfig$EndpointIpamConfig",
+  "fields" : [ {
+    "name" : "ipv4Address"
+  }, {
+    "name" : "ipv6Address"
+  }, {
+    "name" : "linkLocalIPs"
   } ]
 }, {
   "methods" : [ {
@@ -1170,154 +909,104 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.HostConfig",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "binds"
   }, {
-    "allowWrite" : true,
     "name" : "blkioWeight"
   }, {
-    "allowWrite" : true,
     "name" : "blkioWeightDevice"
   }, {
-    "allowWrite" : true,
     "name" : "blkioDeviceReadBps"
   }, {
-    "allowWrite" : true,
     "name" : "blkioDeviceWriteBps"
   }, {
-    "allowWrite" : true,
     "name" : "blkioDeviceReadIOps"
   }, {
-    "allowWrite" : true,
     "name" : "blkioDeviceWriteIOps"
   }, {
-    "allowWrite" : true,
     "name" : "containerIdFile"
   }, {
-    "allowWrite" : true,
     "name" : "lxcConf"
   }, {
-    "allowWrite" : true,
     "name" : "privileged"
   }, {
-    "allowWrite" : true,
     "name" : "portBindings"
   }, {
-    "allowWrite" : true,
     "name" : "links"
   }, {
-    "allowWrite" : true,
     "name" : "publishAllPorts"
   }, {
-    "allowWrite" : true,
     "name" : "dns"
   }, {
-    "allowWrite" : true,
     "name" : "dnsOptions"
   }, {
-    "allowWrite" : true,
     "name" : "dnsSearch"
   }, {
-    "allowWrite" : true,
     "name" : "extraHosts"
   }, {
-    "allowWrite" : true,
     "name" : "groupAdd"
   }, {
-    "allowWrite" : true,
     "name" : "volumesFrom"
   }, {
-    "allowWrite" : true,
     "name" : "capAdd"
   }, {
-    "allowWrite" : true,
     "name" : "capDrop"
   }, {
-    "allowWrite" : true,
     "name" : "networkMode"
   }, {
-    "allowWrite" : true,
     "name" : "securityOpt"
   }, {
-    "allowWrite" : true,
     "name" : "devices"
   }, {
-    "allowWrite" : true,
     "name" : "memory"
   }, {
-    "allowWrite" : true,
     "name" : "memorySwap"
   }, {
-    "allowWrite" : true,
     "name" : "kernelMemory"
   }, {
-    "allowWrite" : true,
     "name" : "memorySwappiness"
   }, {
-    "allowWrite" : true,
     "name" : "memoryReservation"
   }, {
-    "allowWrite" : true,
     "name" : "nanoCpus"
   }, {
-    "allowWrite" : true,
     "name" : "cpuPeriod"
   }, {
-    "allowWrite" : true,
     "name" : "cpuShares"
   }, {
-    "allowWrite" : true,
     "name" : "cpusetCpus"
   }, {
-    "allowWrite" : true,
     "name" : "cpusetMems"
   }, {
-    "allowWrite" : true,
     "name" : "cpuQuota"
   }, {
-    "allowWrite" : true,
     "name" : "cgroupParent"
   }, {
-    "allowWrite" : true,
     "name" : "restartPolicy"
   }, {
-    "allowWrite" : true,
     "name" : "logConfig"
   }, {
-    "allowWrite" : true,
     "name" : "ipcMode"
   }, {
-    "allowWrite" : true,
     "name" : "ulimits"
   }, {
-    "allowWrite" : true,
     "name" : "pidMode"
   }, {
-    "allowWrite" : true,
     "name" : "shmSize"
   }, {
-    "allowWrite" : true,
     "name" : "oomKillDisable"
   }, {
-    "allowWrite" : true,
     "name" : "oomScoreAdj"
   }, {
-    "allowWrite" : true,
     "name" : "autoRemove"
   }, {
-    "allowWrite" : true,
     "name" : "pidsLimit"
   }, {
-    "allowWrite" : true,
     "name" : "tmpfs"
   }, {
-    "allowWrite" : true,
     "name" : "readonlyRootfs"
   }, {
-    "allowWrite" : true,
     "name" : "storageOpt"
   }, {
-    "allowWrite" : true,
     "name" : "runtime"
   } ]
 }, {
@@ -1327,15 +1016,20 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.SecretSpec",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "name"
   }, {
-    "allowWrite" : true,
     "name" : "labels"
   }, {
-    "allowWrite" : true,
     "name" : "data"
   } ]
+}, {
+  "methods" : [ {
+    "name" : "getName"
+  }, {
+    "parameterTypes" : [ "java.lang.String" ],
+    "<init>" : "<init>"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.Network$Type"
 }, {
   "methods" : [ {
     "parameterTypes" : [ "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String", "net.jzajic.graalvm.client.messages.Ipam", "java.util.Map", "java.util.Map", "java.lang.Boolean", "java.lang.Boolean", "java.util.Map", "java.lang.Boolean" ],
@@ -1343,37 +1037,26 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.Network",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "name"
   }, {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "scope"
   }, {
-    "allowWrite" : true,
     "name" : "driver"
   }, {
-    "allowWrite" : true,
     "name" : "ipam"
   }, {
-    "allowWrite" : true,
     "name" : "containers"
   }, {
-    "allowWrite" : true,
     "name" : "options"
   }, {
-    "allowWrite" : true,
     "name" : "internal"
   }, {
-    "allowWrite" : true,
     "name" : "enableIPv6"
   }, {
-    "allowWrite" : true,
     "name" : "labels"
   }, {
-    "allowWrite" : true,
     "name" : "attachable"
   } ]
 }, {
@@ -1383,31 +1066,22 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.ExecState",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "running"
   }, {
-    "allowWrite" : true,
     "name" : "exitCode"
   }, {
-    "allowWrite" : true,
     "name" : "processConfig"
   }, {
-    "allowWrite" : true,
     "name" : "openStdin"
   }, {
-    "allowWrite" : true,
     "name" : "openStdout"
   }, {
-    "allowWrite" : true,
     "name" : "openStderr"
   }, {
-    "allowWrite" : true,
     "name" : "container"
   }, {
-    "allowWrite" : true,
     "name" : "containerId"
   } ]
 }, {
@@ -1417,28 +1091,20 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.BlockIoStats",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "ioServiceBytesRecursive"
   }, {
-    "allowWrite" : true,
     "name" : "ioServicedRecursive"
   }, {
-    "allowWrite" : true,
     "name" : "ioQueueRecursive"
   }, {
-    "allowWrite" : true,
     "name" : "ioServiceTimeRecursive"
   }, {
-    "allowWrite" : true,
     "name" : "ioWaitTimeRecursive"
   }, {
-    "allowWrite" : true,
     "name" : "ioMergedRecursive"
   }, {
-    "allowWrite" : true,
     "name" : "ioTimeRecursive"
   }, {
-    "allowWrite" : true,
     "name" : "sectorsRecursive"
   } ]
 }, {
@@ -1448,43 +1114,7 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.Spread",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "spreadDescriptor"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.Network.Container",
-  "fields" : [ {
-    "allowWrite" : true,
-    "name" : "name"
-  }, {
-    "allowWrite" : true,
-    "name" : "endpointId"
-  }, {
-    "allowWrite" : true,
-    "name" : "macAddress"
-  }, {
-    "allowWrite" : true,
-    "name" : "ipv4Address"
-  }, {
-    "allowWrite" : true,
-    "name" : "ipv6Address"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.util.Map", "java.util.List" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.Info.RegistryConfig",
-  "fields" : [ {
-    "allowWrite" : true,
-    "name" : "indexConfigs"
-  }, {
-    "allowWrite" : true,
-    "name" : "insecureRegistryCidrs"
   } ]
 }, {
   "methods" : [ {
@@ -1493,22 +1123,16 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.Swarm",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "version"
   }, {
-    "allowWrite" : true,
     "name" : "createdAt"
   }, {
-    "allowWrite" : true,
     "name" : "updatedAt"
   }, {
-    "allowWrite" : true,
     "name" : "swarmSpec"
   }, {
-    "allowWrite" : true,
     "name" : "joinTokens"
   } ]
 }, {
@@ -1518,24 +1142,9 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.RemoteManager",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "addr"
   }, {
-    "allowWrite" : true,
     "name" : "nodeId"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.lang.String", "java.lang.String" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.HostConfig.LxcConfParameter",
-  "fields" : [ {
-    "allowWrite" : true,
-    "name" : "key"
-  }, {
-    "allowWrite" : true,
-    "name" : "value"
   } ]
 }, {
   "methods" : [ {
@@ -1544,14 +1153,33 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.ContainerStatus",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "containerId"
   }, {
-    "allowWrite" : true,
     "name" : "pid"
   }, {
-    "allowWrite" : true,
     "name" : "exitCode"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.util.List", "java.util.List" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.Info$Plugins",
+  "fields" : [ {
+    "name" : "volumes"
+  }, {
+    "name" : "networks"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.lang.String", "java.lang.Integer" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.HostConfig$BlkioDeviceRate",
+  "fields" : [ {
+    "name" : "path"
+  }, {
+    "name" : "rate"
   } ]
 }, {
   "methods" : [ {
@@ -1560,80 +1188,66 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.ContainerConfig",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "hostname"
   }, {
-    "allowWrite" : true,
     "name" : "domainname"
   }, {
-    "allowWrite" : true,
     "name" : "user"
   }, {
-    "allowWrite" : true,
     "name" : "attachStdin"
   }, {
-    "allowWrite" : true,
     "name" : "attachStdout"
   }, {
-    "allowWrite" : true,
     "name" : "attachStderr"
   }, {
-    "allowWrite" : true,
     "name" : "portSpecs"
   }, {
-    "allowWrite" : true,
     "name" : "exposedPorts"
   }, {
-    "allowWrite" : true,
     "name" : "tty"
   }, {
-    "allowWrite" : true,
     "name" : "openStdin"
   }, {
-    "allowWrite" : true,
     "name" : "stdinOnce"
   }, {
-    "allowWrite" : true,
     "name" : "env"
   }, {
-    "allowWrite" : true,
     "name" : "cmd"
   }, {
-    "allowWrite" : true,
     "name" : "image"
   }, {
-    "allowWrite" : true,
     "name" : "volumes"
   }, {
-    "allowWrite" : true,
     "name" : "workingDir"
   }, {
-    "allowWrite" : true,
     "name" : "entrypoint"
   }, {
-    "allowWrite" : true,
     "name" : "networkDisabled"
   }, {
-    "allowWrite" : true,
     "name" : "onBuild"
   }, {
-    "allowWrite" : true,
     "name" : "labels"
   }, {
-    "allowWrite" : true,
     "name" : "macAddress"
   }, {
-    "allowWrite" : true,
     "name" : "hostConfig"
   }, {
-    "allowWrite" : true,
     "name" : "stopSignal"
   }, {
-    "allowWrite" : true,
     "name" : "healthcheck"
   }, {
-    "allowWrite" : true,
     "name" : "networkingConfig"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.lang.String", "java.lang.String" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.HostConfig$LxcConfParameter",
+  "fields" : [ {
+    "name" : "key"
+  }, {
+    "name" : "value"
   } ]
 }, {
   "methods" : [ {
@@ -1642,19 +1256,14 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.Config",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "version"
   }, {
-    "allowWrite" : true,
     "name" : "createdAt"
   }, {
-    "allowWrite" : true,
     "name" : "updatedAt"
   }, {
-    "allowWrite" : true,
     "name" : "configSpec"
   } ]
 }, {
@@ -1664,31 +1273,22 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.SwarmInfo",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "cluster"
   }, {
-    "allowWrite" : true,
     "name" : "controlAvailable"
   }, {
-    "allowWrite" : true,
     "name" : "error"
   }, {
-    "allowWrite" : true,
     "name" : "localNodeState"
   }, {
-    "allowWrite" : true,
     "name" : "nodeAddr"
   }, {
-    "allowWrite" : true,
     "name" : "nodeId"
   }, {
-    "allowWrite" : true,
     "name" : "nodes"
   }, {
-    "allowWrite" : true,
     "name" : "managers"
   }, {
-    "allowWrite" : true,
     "name" : "remoteManagers"
   } ]
 }, {
@@ -1698,28 +1298,20 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.SwarmSpec",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "name"
   }, {
-    "allowWrite" : true,
     "name" : "labels"
   }, {
-    "allowWrite" : true,
     "name" : "orchestration"
   }, {
-    "allowWrite" : true,
     "name" : "raft"
   }, {
-    "allowWrite" : true,
     "name" : "dispatcher"
   }, {
-    "allowWrite" : true,
     "name" : "caConfig"
   }, {
-    "allowWrite" : true,
     "name" : "encryptionConfig"
   }, {
-    "allowWrite" : true,
     "name" : "taskDefaults"
   } ]
 }, {
@@ -1729,24 +1321,9 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.EnginePlugin",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "type"
   }, {
-    "allowWrite" : true,
     "name" : "name"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.lang.String", "java.lang.Integer" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.HostConfig.BlkioDeviceRate",
-  "fields" : [ {
-    "allowWrite" : true,
-    "name" : "path"
-  }, {
-    "allowWrite" : true,
-    "name" : "rate"
   } ]
 }, {
   "methods" : [ {
@@ -1755,19 +1332,14 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.TaskStatus",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "timestamp"
   }, {
-    "allowWrite" : true,
     "name" : "state"
   }, {
-    "allowWrite" : true,
     "name" : "message"
   }, {
-    "allowWrite" : true,
     "name" : "err"
   }, {
-    "allowWrite" : true,
     "name" : "containerStatus"
   } ]
 }, {
@@ -1777,19 +1349,14 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.Event",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "type"
   }, {
-    "allowWrite" : true,
     "name" : "action"
   }, {
-    "allowWrite" : true,
     "name" : "actor"
   }, {
-    "allowWrite" : true,
     "name" : "time"
   }, {
-    "allowWrite" : true,
     "name" : "timeNano"
   } ]
 }, {
@@ -1799,22 +1366,17 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.NodeDescription",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "hostname"
   }, {
-    "allowWrite" : true,
     "name" : "platform"
   }, {
-    "allowWrite" : true,
     "name" : "resources"
   }, {
-    "allowWrite" : true,
     "name" : "engine"
   } ]
 }, {
   "name" : "net.jzajic.graalvm.client.messages.mount.BindOptions",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "propagation"
   } ]
 }, {
@@ -1824,28 +1386,20 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.NetworkStats",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "rxBytes"
   }, {
-    "allowWrite" : true,
     "name" : "rxPackets"
   }, {
-    "allowWrite" : true,
     "name" : "rxDropped"
   }, {
-    "allowWrite" : true,
     "name" : "rxErrors"
   }, {
-    "allowWrite" : true,
     "name" : "txBytes"
   }, {
-    "allowWrite" : true,
     "name" : "txPackets"
   }, {
-    "allowWrite" : true,
     "name" : "txDropped"
   }, {
-    "allowWrite" : true,
     "name" : "txErrors"
   } ]
 }, {
@@ -1855,10 +1409,8 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.Platform",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "architecture"
   }, {
-    "allowWrite" : true,
     "name" : "os"
   } ]
 }, {
@@ -1868,10 +1420,8 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.Placement",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "constraints"
   }, {
-    "allowWrite" : true,
     "name" : "preferences"
   } ]
 }, {
@@ -1881,23 +1431,32 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.ProgressMessage",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "status"
   }, {
-    "allowWrite" : true,
     "name" : "stream"
   }, {
-    "allowWrite" : true,
     "name" : "error"
   }, {
-    "allowWrite" : true,
     "name" : "progress"
   }, {
-    "allowWrite" : true,
     "name" : "progressDetail"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.lang.Long", "java.util.List", "java.lang.Long", "java.lang.Long" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.CpuStats$CpuUsage",
+  "fields" : [ {
+    "name" : "totalUsage"
+  }, {
+    "name" : "percpuUsage"
+  }, {
+    "name" : "usageInKernelmode"
+  }, {
+    "name" : "usageInUsermode"
   } ]
 }, {
   "methods" : [ {
@@ -1906,10 +1465,8 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.Driver",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "name"
   }, {
-    "allowWrite" : true,
     "name" : "options"
   } ]
 }, {
@@ -1919,46 +1476,32 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.ImageInfo",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "parent"
   }, {
-    "allowWrite" : true,
     "name" : "comment"
   }, {
-    "allowWrite" : true,
     "name" : "created"
   }, {
-    "allowWrite" : true,
     "name" : "container"
   }, {
-    "allowWrite" : true,
     "name" : "containerConfig"
   }, {
-    "allowWrite" : true,
     "name" : "dockerVersion"
   }, {
-    "allowWrite" : true,
     "name" : "author"
   }, {
-    "allowWrite" : true,
     "name" : "config"
   }, {
-    "allowWrite" : true,
     "name" : "architecture"
   }, {
-    "allowWrite" : true,
     "name" : "os"
   }, {
-    "allowWrite" : true,
     "name" : "size"
   }, {
-    "allowWrite" : true,
     "name" : "virtualSize"
   }, {
-    "allowWrite" : true,
     "name" : "rootFs"
   } ]
 }, {
@@ -1968,19 +1511,14 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.SwarmCluster",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "version"
   }, {
-    "allowWrite" : true,
     "name" : "createdAt"
   }, {
-    "allowWrite" : true,
     "name" : "updatedAt"
   }, {
-    "allowWrite" : true,
     "name" : "swarmSpec"
   } ]
 }, {
@@ -1990,13 +1528,10 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.CpuStats",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "cpuUsage"
   }, {
-    "allowWrite" : true,
     "name" : "systemCpuUsage"
   }, {
-    "allowWrite" : true,
     "name" : "throttlingData"
   } ]
 }, {
@@ -2011,7 +1546,6 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.DispatcherConfig",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "heartbeatPeriod"
   } ]
 }, {
@@ -2021,26 +1555,16 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.PortConfig",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "name"
   }, {
-    "allowWrite" : true,
     "name" : "protocol"
   }, {
-    "allowWrite" : true,
     "name" : "targetPort"
   }, {
-    "allowWrite" : true,
     "name" : "publishedPort"
   }, {
-    "allowWrite" : true,
     "name" : "publishMode"
   } ]
-}, {
-  "methods" : [ {
-    "name" : "getValue"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.swarm.EndpointSpec.Mode"
 }, {
   "methods" : [ {
     "parameterTypes" : [ "java.lang.String", "java.util.List" ],
@@ -2048,11 +1572,24 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.ServiceCreateResponse",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "warnings"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.ContainerInfo$Node",
+  "fields" : [ {
+    "name" : "id"
+  }, {
+    "name" : "ip"
+  }, {
+    "name" : "addr"
+  }, {
+    "name" : "name"
   } ]
 }, {
   "methods" : [ {
@@ -2061,19 +1598,14 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.ProcessConfig",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "privileged"
   }, {
-    "allowWrite" : true,
     "name" : "user"
   }, {
-    "allowWrite" : true,
     "name" : "tty"
   }, {
-    "allowWrite" : true,
     "name" : "entrypoint"
   }, {
-    "allowWrite" : true,
     "name" : "arguments"
   } ]
 }, {
@@ -2083,20 +1615,10 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.VolumeList",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "volumes"
   }, {
-    "allowWrite" : true,
     "name" : "warnings"
   } ]
-}, {
-  "methods" : [ {
-    "name" : "getName"
-  }, {
-    "parameterTypes" : [ "java.lang.String" ],
-    "<init>" : "<init>"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.Network.Type"
 }, {
   "methods" : [ {
     "parameterTypes" : [ "java.lang.String", "java.util.List", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.Long", "java.lang.String", "java.lang.String", "java.util.List", "java.util.Map", "java.lang.Long", "java.lang.Long", "net.jzajic.graalvm.client.messages.NetworkSettings", "java.util.List" ],
@@ -2104,46 +1626,32 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.Container",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "names"
   }, {
-    "allowWrite" : true,
     "name" : "image"
   }, {
-    "allowWrite" : true,
     "name" : "imageId"
   }, {
-    "allowWrite" : true,
     "name" : "command"
   }, {
-    "allowWrite" : true,
     "name" : "created"
   }, {
-    "allowWrite" : true,
     "name" : "state"
   }, {
-    "allowWrite" : true,
     "name" : "status"
   }, {
-    "allowWrite" : true,
     "name" : "ports"
   }, {
-    "allowWrite" : true,
     "name" : "labels"
   }, {
-    "allowWrite" : true,
     "name" : "sizeRw"
   }, {
-    "allowWrite" : true,
     "name" : "sizeRootFs"
   }, {
-    "allowWrite" : true,
     "name" : "networkSettings"
   }, {
-    "allowWrite" : true,
     "name" : "mounts"
   } ]
 }, {
@@ -2153,10 +1661,8 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.NetworkAttachmentConfig",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "target"
   }, {
-    "allowWrite" : true,
     "name" : "aliases"
   } ]
 }, {
@@ -2166,8 +1672,20 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.Preference",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "spread"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.lang.String", "java.lang.Integer", "java.util.List" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.ContainerState$Health",
+  "fields" : [ {
+    "name" : "status"
+  }, {
+    "name" : "failingStreak"
+  }, {
+    "name" : "log"
   } ]
 }, {
   "methods" : [ {
@@ -2176,10 +1694,8 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.EndpointVirtualIp",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "networkId"
   }, {
-    "allowWrite" : true,
     "name" : "addr"
   } ]
 }, {
@@ -2189,7 +1705,6 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.TaskDefaults",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "logDriver"
   } ]
 }, {
@@ -2201,13 +1716,10 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.DockerCredentialHelperAuth",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "username"
   }, {
-    "allowWrite" : true,
     "name" : "secret"
   }, {
-    "allowWrite" : true,
     "name" : "serverUrl"
   } ]
 }, {
@@ -2217,49 +1729,28 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.SecretFile",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "name"
   }, {
-    "allowWrite" : true,
     "name" : "uid"
   }, {
-    "allowWrite" : true,
     "name" : "gid"
   }, {
-    "allowWrite" : true,
     "name" : "mode"
   } ]
 }, {
   "methods" : [ {
-    "parameterTypes" : [ "java.util.List", "java.lang.Long", "java.lang.Long", "java.lang.Integer", "java.lang.Long" ],
+    "parameterTypes" : [ "java.lang.String", "java.util.List", "java.lang.Boolean", "java.lang.Boolean" ],
     "name" : "create"
   } ],
-  "name" : "net.jzajic.graalvm.client.messages.ContainerConfig.Healthcheck",
+  "name" : "net.jzajic.graalvm.client.messages.Info$IndexConfig",
   "fields" : [ {
-    "allowWrite" : true,
-    "name" : "test"
+    "name" : "name"
   }, {
-    "allowWrite" : true,
-    "name" : "interval"
+    "name" : "mirrors"
   }, {
-    "allowWrite" : true,
-    "name" : "timeout"
+    "name" : "secure"
   }, {
-    "allowWrite" : true,
-    "name" : "retries"
-  }, {
-    "allowWrite" : true,
-    "name" : "startPeriod"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.util.Map" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.ContainerConfig.NetworkingConfig",
-  "fields" : [ {
-    "allowWrite" : true,
-    "name" : "endpointsConfig"
+    "name" : "official"
   } ]
 }, {
   "methods" : [ {
@@ -2268,22 +1759,16 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.Platform",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "architecture"
   }, {
-    "allowWrite" : true,
     "name" : "os"
   }, {
-    "allowWrite" : true,
     "name" : "osVersion"
   }, {
-    "allowWrite" : true,
     "name" : "osFeatures"
   }, {
-    "allowWrite" : true,
     "name" : "variant"
   }, {
-    "allowWrite" : true,
     "name" : "features"
   } ]
 }, {
@@ -2293,39 +1778,15 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.RegistryAuth",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "username"
   }, {
-    "allowWrite" : true,
     "name" : "password"
   }, {
-    "allowWrite" : true,
     "name" : "email"
   }, {
-    "allowWrite" : true,
     "name" : "serverAddress"
   }, {
-    "allowWrite" : true,
     "name" : "identityToken"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "int", "int", "java.lang.String", "java.lang.String" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.Container.PortMapping",
-  "fields" : [ {
-    "allowWrite" : true,
-    "name" : "privatePort"
-  }, {
-    "allowWrite" : true,
-    "name" : "publicPort"
-  }, {
-    "allowWrite" : true,
-    "name" : "type"
-  }, {
-    "allowWrite" : true,
-    "name" : "ip"
   } ]
 }, {
   "methods" : [ {
@@ -2334,36 +1795,9 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.Distribution",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "descriptor"
   }, {
-    "allowWrite" : true,
     "name" : "platforms"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.lang.String", "java.lang.Integer" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.HostConfig.RestartPolicy",
-  "fields" : [ {
-    "allowWrite" : true,
-    "name" : "name"
-  }, {
-    "allowWrite" : true,
-    "name" : "maxRetryCount"
-  } ]
-}, {
-  "name" : "net.jzajic.graalvm.client.messages.EndpointConfig.EndpointIpamConfig",
-  "fields" : [ {
-    "allowWrite" : true,
-    "name" : "ipv4Address"
-  }, {
-    "allowWrite" : true,
-    "name" : "ipv6Address"
-  }, {
-    "allowWrite" : true,
-    "name" : "linkLocalIPs"
   } ]
 }, {
   "methods" : [ {
@@ -2372,142 +1806,98 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.ContainerInfo",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "created"
   }, {
-    "allowWrite" : true,
     "name" : "path"
   }, {
-    "allowWrite" : true,
     "name" : "args"
   }, {
-    "allowWrite" : true,
     "name" : "config"
   }, {
-    "allowWrite" : true,
     "name" : "hostConfig"
   }, {
-    "allowWrite" : true,
     "name" : "state"
   }, {
-    "allowWrite" : true,
     "name" : "image"
   }, {
-    "allowWrite" : true,
     "name" : "networkSettings"
   }, {
-    "allowWrite" : true,
     "name" : "resolvConfPath"
   }, {
-    "allowWrite" : true,
     "name" : "hostnamePath"
   }, {
-    "allowWrite" : true,
     "name" : "hostsPath"
   }, {
-    "allowWrite" : true,
     "name" : "name"
   }, {
-    "allowWrite" : true,
     "name" : "driver"
   }, {
-    "allowWrite" : true,
     "name" : "execDriver"
   }, {
-    "allowWrite" : true,
     "name" : "processLabel"
   }, {
-    "allowWrite" : true,
     "name" : "mountLabel"
   }, {
-    "allowWrite" : true,
     "name" : "volumes"
   }, {
-    "allowWrite" : true,
     "name" : "volumesRw"
   }, {
-    "allowWrite" : true,
     "name" : "appArmorProfile"
   }, {
-    "allowWrite" : true,
     "name" : "execIds"
   }, {
-    "allowWrite" : true,
     "name" : "logPath"
   }, {
-    "allowWrite" : true,
     "name" : "restartCount"
   }, {
-    "allowWrite" : true,
     "name" : "mounts"
   }, {
-    "allowWrite" : true,
     "name" : "node"
   } ]
 }, {
   "name" : "net.jzajic.graalvm.client.messages.NetworkConfig",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "name"
   }, {
-    "allowWrite" : true,
     "name" : "driver"
   }, {
-    "allowWrite" : true,
     "name" : "ipam"
   }, {
-    "allowWrite" : true,
     "name" : "options"
   }, {
-    "allowWrite" : true,
     "name" : "checkDuplicate"
   }, {
-    "allowWrite" : true,
     "name" : "internal"
   }, {
-    "allowWrite" : true,
     "name" : "enableIPv6"
   }, {
-    "allowWrite" : true,
     "name" : "attachable"
   }, {
-    "allowWrite" : true,
     "name" : "labels"
   } ]
 }, {
   "name" : "net.jzajic.graalvm.client.messages.EndpointConfig",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "ipamConfig"
   }, {
-    "allowWrite" : true,
     "name" : "links"
   }, {
-    "allowWrite" : true,
     "name" : "aliases"
   }, {
-    "allowWrite" : true,
     "name" : "gateway"
   }, {
-    "allowWrite" : true,
     "name" : "ipAddress"
   }, {
-    "allowWrite" : true,
     "name" : "ipPrefixLen"
   }, {
-    "allowWrite" : true,
     "name" : "ipv6Gateway"
   }, {
-    "allowWrite" : true,
     "name" : "globalIPv6Address"
   }, {
-    "allowWrite" : true,
     "name" : "globalIPv6PrefixLen"
   }, {
-    "allowWrite" : true,
     "name" : "macAddress"
   } ]
 }, {
@@ -2517,10 +1907,8 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.RootFs",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "type"
   }, {
-    "allowWrite" : true,
     "name" : "layers"
   } ]
 }, {
@@ -2528,15 +1916,12 @@
     "parameterTypes" : [ "java.lang.Long", "java.lang.Long", "java.lang.Long" ],
     "name" : "create"
   } ],
-  "name" : "net.jzajic.graalvm.client.messages.CpuStats.ThrottlingData",
+  "name" : "net.jzajic.graalvm.client.messages.CpuStats$ThrottlingData",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "periods"
   }, {
-    "allowWrite" : true,
     "name" : "throttledPeriods"
   }, {
-    "allowWrite" : true,
     "name" : "throttledTime"
   } ]
 }, {
@@ -2546,25 +1931,18 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.ServiceSpec",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "name"
   }, {
-    "allowWrite" : true,
     "name" : "labels"
   }, {
-    "allowWrite" : true,
     "name" : "taskTemplate"
   }, {
-    "allowWrite" : true,
     "name" : "mode"
   }, {
-    "allowWrite" : true,
     "name" : "updateConfig"
   }, {
-    "allowWrite" : true,
     "name" : "networks"
   }, {
-    "allowWrite" : true,
     "name" : "endpointSpec"
   } ]
 }, {
@@ -2574,20 +1952,30 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.Secret",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "version"
   }, {
-    "allowWrite" : true,
     "name" : "createdAt"
   }, {
-    "allowWrite" : true,
     "name" : "updatedAt"
   }, {
-    "allowWrite" : true,
     "name" : "secretSpec"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "int", "int", "java.lang.String", "java.lang.String" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.Container$PortMapping",
+  "fields" : [ {
+    "name" : "privatePort"
+  }, {
+    "name" : "publicPort"
+  }, {
+    "name" : "type"
+  }, {
+    "name" : "ip"
   } ]
 }, {
   "methods" : [ {
@@ -2596,7 +1984,6 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.ContainerUpdate",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "warnings"
   } ]
 }, {
@@ -2606,11 +1993,26 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.ServiceMode",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "replicated"
   }, {
-    "allowWrite" : true,
     "name" : "global"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.util.List", "java.lang.Long", "java.lang.Long", "java.lang.Integer", "java.lang.Long" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.ContainerConfig$Healthcheck",
+  "fields" : [ {
+    "name" : "test"
+  }, {
+    "name" : "interval"
+  }, {
+    "name" : "timeout"
+  }, {
+    "name" : "retries"
+  }, {
+    "name" : "startPeriod"
   } ]
 }, {
   "methods" : [ {
@@ -2619,36 +2021,13 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.ConfigFile",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "name"
   }, {
-    "allowWrite" : true,
     "name" : "uid"
   }, {
-    "allowWrite" : true,
     "name" : "gid"
   }, {
-    "allowWrite" : true,
     "name" : "mode"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.lang.Long", "java.util.List", "java.lang.Long", "java.lang.Long" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.CpuStats.CpuUsage",
-  "fields" : [ {
-    "allowWrite" : true,
-    "name" : "totalUsage"
-  }, {
-    "allowWrite" : true,
-    "name" : "percpuUsage"
-  }, {
-    "allowWrite" : true,
-    "name" : "usageInKernelmode"
-  }, {
-    "allowWrite" : true,
-    "name" : "usageInUsermode"
   } ]
 }, {
   "methods" : [ {
@@ -2657,13 +2036,10 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.Ipam",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "driver"
   }, {
-    "allowWrite" : true,
     "name" : "config"
   }, {
-    "allowWrite" : true,
     "name" : "options"
   } ]
 }, {
@@ -2673,13 +2049,10 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.mount.VolumeOptions",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "noCopy"
   }, {
-    "allowWrite" : true,
     "name" : "labels"
   }, {
-    "allowWrite" : true,
     "name" : "driverConfig"
   } ]
 }, {
@@ -2689,25 +2062,18 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.mount.Mount",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "type"
   }, {
-    "allowWrite" : true,
     "name" : "source"
   }, {
-    "allowWrite" : true,
     "name" : "target"
   }, {
-    "allowWrite" : true,
     "name" : "readOnly"
   }, {
-    "allowWrite" : true,
     "name" : "bindOptions"
   }, {
-    "allowWrite" : true,
     "name" : "volumeOptions"
   }, {
-    "allowWrite" : true,
     "name" : "tmpfsOptions"
   } ]
 }, {
@@ -2717,10 +2083,8 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.NetworkAttachment",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "network"
   }, {
-    "allowWrite" : true,
     "name" : "addresses"
   } ]
 }, {
@@ -2730,7 +2094,6 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.OrchestrationConfig",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "taskHistoryRetentionLimit"
   } ]
 }, {
@@ -2740,13 +2103,10 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.EngineConfig",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "engineVersion"
   }, {
-    "allowWrite" : true,
     "name" : "labels"
   }, {
-    "allowWrite" : true,
     "name" : "plugins"
   } ]
 }, {
@@ -2756,136 +2116,92 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.Info",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "architecture"
   }, {
-    "allowWrite" : true,
     "name" : "clusterStore"
   }, {
-    "allowWrite" : true,
     "name" : "cgroupDriver"
   }, {
-    "allowWrite" : true,
     "name" : "containers"
   }, {
-    "allowWrite" : true,
     "name" : "containersRunning"
   }, {
-    "allowWrite" : true,
     "name" : "containersStopped"
   }, {
-    "allowWrite" : true,
     "name" : "containersPaused"
   }, {
-    "allowWrite" : true,
     "name" : "cpuCfsPeriod"
   }, {
-    "allowWrite" : true,
     "name" : "cpuCfsQuota"
   }, {
-    "allowWrite" : true,
     "name" : "debug"
   }, {
-    "allowWrite" : true,
     "name" : "dockerRootDir"
   }, {
-    "allowWrite" : true,
     "name" : "storageDriver"
   }, {
-    "allowWrite" : true,
     "name" : "driverStatus"
   }, {
-    "allowWrite" : true,
     "name" : "executionDriver"
   }, {
-    "allowWrite" : true,
     "name" : "experimentalBuild"
   }, {
-    "allowWrite" : true,
     "name" : "httpProxy"
   }, {
-    "allowWrite" : true,
     "name" : "httpsProxy"
   }, {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "ipv4Forwarding"
   }, {
-    "allowWrite" : true,
     "name" : "images"
   }, {
-    "allowWrite" : true,
     "name" : "indexServerAddress"
   }, {
-    "allowWrite" : true,
     "name" : "initPath"
   }, {
-    "allowWrite" : true,
     "name" : "initSha1"
   }, {
-    "allowWrite" : true,
     "name" : "kernelMemory"
   }, {
-    "allowWrite" : true,
     "name" : "kernelVersion"
   }, {
-    "allowWrite" : true,
     "name" : "labels"
   }, {
-    "allowWrite" : true,
     "name" : "memTotal"
   }, {
-    "allowWrite" : true,
     "name" : "memoryLimit"
   }, {
-    "allowWrite" : true,
     "name" : "cpus"
   }, {
-    "allowWrite" : true,
     "name" : "eventsListener"
   }, {
-    "allowWrite" : true,
     "name" : "fileDescriptors"
   }, {
-    "allowWrite" : true,
     "name" : "goroutines"
   }, {
-    "allowWrite" : true,
     "name" : "name"
   }, {
-    "allowWrite" : true,
     "name" : "noProxy"
   }, {
-    "allowWrite" : true,
     "name" : "oomKillDisable"
   }, {
-    "allowWrite" : true,
     "name" : "operatingSystem"
   }, {
-    "allowWrite" : true,
     "name" : "osType"
   }, {
-    "allowWrite" : true,
     "name" : "plugins"
   }, {
-    "allowWrite" : true,
     "name" : "registryConfig"
   }, {
-    "allowWrite" : true,
     "name" : "serverVersion"
   }, {
-    "allowWrite" : true,
     "name" : "swapLimit"
   }, {
-    "allowWrite" : true,
     "name" : "swarm"
   }, {
-    "allowWrite" : true,
     "name" : "systemStatus"
   }, {
-    "allowWrite" : true,
     "name" : "systemTime"
   } ]
 }, {
@@ -2895,22 +2211,16 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.TaskSpec",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "containerSpec"
   }, {
-    "allowWrite" : true,
     "name" : "resources"
   }, {
-    "allowWrite" : true,
     "name" : "restartPolicy"
   }, {
-    "allowWrite" : true,
     "name" : "placement"
   }, {
-    "allowWrite" : true,
     "name" : "networks"
   }, {
-    "allowWrite" : true,
     "name" : "logDriver"
   } ]
 }, {
@@ -2920,46 +2230,33 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.ContainerState",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "status"
   }, {
-    "allowWrite" : true,
     "name" : "running"
   }, {
-    "allowWrite" : true,
     "name" : "paused"
   }, {
-    "allowWrite" : true,
     "name" : "restarting"
   }, {
-    "allowWrite" : true,
     "name" : "pid"
   }, {
-    "allowWrite" : true,
     "name" : "exitCode"
   }, {
-    "allowWrite" : true,
     "name" : "startedAt"
   }, {
-    "allowWrite" : true,
     "name" : "finishedAt"
   }, {
-    "allowWrite" : true,
     "name" : "error"
   }, {
-    "allowWrite" : true,
     "name" : "oomKilled"
   }, {
-    "allowWrite" : true,
     "name" : "health"
   } ]
 }, {
   "name" : "net.jzajic.graalvm.client.messages.NetworkConnection",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "containerId"
   }, {
-    "allowWrite" : true,
     "name" : "endpointConfig"
   } ]
 }, {
@@ -2969,35 +2266,45 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.AttachedNetwork",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "aliases"
   }, {
-    "allowWrite" : true,
     "name" : "networkId"
   }, {
-    "allowWrite" : true,
     "name" : "endpointId"
   }, {
-    "allowWrite" : true,
     "name" : "gateway"
   }, {
-    "allowWrite" : true,
     "name" : "ipAddress"
   }, {
-    "allowWrite" : true,
     "name" : "ipPrefixLen"
   }, {
-    "allowWrite" : true,
     "name" : "ipv6Gateway"
   }, {
-    "allowWrite" : true,
     "name" : "globalIPv6Address"
   }, {
-    "allowWrite" : true,
     "name" : "globalIPv6PrefixLen"
   }, {
-    "allowWrite" : true,
     "name" : "macAddress"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.lang.String", "java.lang.Integer" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.HostConfig$BlkioWeightDevice",
+  "fields" : [ {
+    "name" : "path"
+  }, {
+    "name" : "weight"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.util.Map" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.ContainerConfig$NetworkingConfig",
+  "fields" : [ {
+    "name" : "endpointsConfig"
   } ]
 }, {
   "methods" : [ {
@@ -3006,14 +2313,24 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.SecretBind",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "file"
   }, {
-    "allowWrite" : true,
     "name" : "secretId"
   }, {
-    "allowWrite" : true,
     "name" : "secretName"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.lang.String", "java.lang.Long", "java.lang.Long" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.HostConfig$Ulimit",
+  "fields" : [ {
+    "name" : "name"
+  }, {
+    "name" : "soft"
+  }, {
+    "name" : "hard"
   } ]
 }, {
   "methods" : [ {
@@ -3022,24 +2339,9 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.IpamOptions",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "driver"
   }, {
-    "allowWrite" : true,
     "name" : "configs"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.lang.String", "java.util.Map" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.Event.Actor",
-  "fields" : [ {
-    "allowWrite" : true,
-    "name" : "id"
-  }, {
-    "allowWrite" : true,
-    "name" : "attributes"
   } ]
 }, {
   "methods" : [ {
@@ -3048,10 +2350,8 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.PortBinding",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "hostIp"
   }, {
-    "allowWrite" : true,
     "name" : "hostPort"
   } ]
 }, {
@@ -3061,38 +2361,22 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.Node",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "version"
   }, {
-    "allowWrite" : true,
     "name" : "createdAt"
   }, {
-    "allowWrite" : true,
     "name" : "updatedAt"
   }, {
-    "allowWrite" : true,
     "name" : "spec"
   }, {
-    "allowWrite" : true,
     "name" : "description"
   }, {
-    "allowWrite" : true,
     "name" : "status"
   }, {
-    "allowWrite" : true,
     "name" : "managerStatus"
   } ]
-}, {
-  "methods" : [ {
-    "name" : "getName"
-  }, {
-    "parameterTypes" : [ "java.lang.String" ],
-    "<init>" : "<init>"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.Event.Type"
 }, {
   "methods" : [ {
     "parameterTypes" : [ "java.lang.String", "java.util.List" ],
@@ -3100,30 +2384,9 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.ContainerCreation",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "id"
   }, {
-    "allowWrite" : true,
     "name" : "warnings"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.lang.String", "java.util.List", "java.lang.Boolean", "java.lang.Boolean" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.Info.IndexConfig",
-  "fields" : [ {
-    "allowWrite" : true,
-    "name" : "name"
-  }, {
-    "allowWrite" : true,
-    "name" : "mirrors"
-  }, {
-    "allowWrite" : true,
-    "name" : "secure"
-  }, {
-    "allowWrite" : true,
-    "name" : "official"
   } ]
 }, {
   "methods" : [ {
@@ -3132,27 +2395,28 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.ContainerStats",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "read"
   }, {
-    "allowWrite" : true,
     "name" : "network"
   }, {
-    "allowWrite" : true,
     "name" : "networks"
   }, {
-    "allowWrite" : true,
     "name" : "memoryStats"
   }, {
-    "allowWrite" : true,
     "name" : "blockIoStats"
   }, {
-    "allowWrite" : true,
     "name" : "cpuStats"
   }, {
-    "allowWrite" : true,
     "name" : "precpuStats"
   } ]
+}, {
+  "methods" : [ {
+    "name" : "getName"
+  }, {
+    "parameterTypes" : [ "java.lang.String" ],
+    "<init>" : "<init>"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.swarm.PortConfig$PortConfigPublishMode"
 }, {
   "methods" : [ {
     "parameterTypes" : [ "java.lang.Long", "java.lang.Integer" ],
@@ -3160,10 +2424,8 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.mount.TmpfsOptions",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "sizeBytes"
   }, {
-    "allowWrite" : true,
     "name" : "mode"
   } ]
 }, {
@@ -3173,10 +2435,8 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.EndpointSpec",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "mode"
   }, {
-    "allowWrite" : true,
     "name" : "ports"
   } ]
 }, {
@@ -3186,19 +2446,14 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.MemoryStats",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "stats"
   }, {
-    "allowWrite" : true,
     "name" : "maxUsage"
   }, {
-    "allowWrite" : true,
     "name" : "usage"
   }, {
-    "allowWrite" : true,
     "name" : "failcnt"
   }, {
-    "allowWrite" : true,
     "name" : "limit"
   } ]
 }, {
@@ -3208,16 +2463,12 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.Endpoint",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "spec"
   }, {
-    "allowWrite" : true,
     "name" : "exposedPorts"
   }, {
-    "allowWrite" : true,
     "name" : "ports"
   }, {
-    "allowWrite" : true,
     "name" : "virtualIps"
   } ]
 }, {
@@ -3227,21 +2478,22 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.UnlockKey",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "unlockKey"
   } ]
 }, {
   "methods" : [ {
-    "parameterTypes" : [ "java.lang.String", "java.lang.Integer" ],
+    "parameterTypes" : [ "java.util.Date", "java.util.Date", "java.lang.Long", "java.lang.String" ],
     "name" : "create"
   } ],
-  "name" : "net.jzajic.graalvm.client.messages.HostConfig.BlkioWeightDevice",
+  "name" : "net.jzajic.graalvm.client.messages.ContainerState$HealthLog",
   "fields" : [ {
-    "allowWrite" : true,
-    "name" : "path"
+    "name" : "start"
   }, {
-    "allowWrite" : true,
-    "name" : "weight"
+    "name" : "end"
+  }, {
+    "name" : "exitCode"
+  }, {
+    "name" : "output"
   } ]
 }, {
   "methods" : [ {
@@ -3250,7 +2502,6 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.ReplicatedService",
   "fields" : [ {
-    "allowWrite" : true,
     "name" : "replicas"
   } ]
 } ]
