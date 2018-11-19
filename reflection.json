@@ -16,5 +16,9 @@
 	{
 		"name" : "java.util.ArrayList",
 		"allPublicConstructors" : true
+	},
+	{
+		"name" : "java.util.LinkedHashMap",
+		"allPublicConstructors" : true
 	}
 ]
