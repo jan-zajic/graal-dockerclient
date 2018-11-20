@@ -19,7 +19,6 @@ import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
 import javax.lang.model.element.ExecutableElement;
-import javax.lang.model.element.Modifier;
 import javax.lang.model.element.NestingKind;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.element.VariableElement;
@@ -28,7 +27,6 @@ import javax.lang.model.type.DeclaredType;
 import javax.lang.model.type.TypeMirror;
 import javax.lang.model.util.Elements;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SupportedAnnotationTypes(
@@ -48,7 +46,7 @@ public class ReflectionJsonAnnotationProcessor extends AbstractProcessor {
 	public synchronized void init(ProcessingEnvironment processingEnv) {
 		super.init(processingEnv);
 		elementUtils = processingEnv.getElementUtils();
-		outputFile = new File(outputDir, "reflection-gen.json");
+		outputFile = new File(outputDir, "/src/main/resources/reflection-gen.json");
 	}
 	
 	@Override

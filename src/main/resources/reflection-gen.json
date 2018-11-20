@@ -89,8 +89,10 @@
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.EndpointSpec$Mode"
 }, {
+  "name" : "java.lang.Integer"
+}, {
   "methods" : [ {
-    "parameterTypes" : [ "java.lang.String", "java.util.Map", "java.lang.String", "java.util.List", "java.util.List", "java.util.List", "java.lang.String", "java.lang.String", "java.util.List", "java.lang.Boolean", "java.util.List", "java.lang.Long", "net.jzajic.graalvm.client.messages.ContainerConfig.Healthcheck", "java.util.List", "java.util.List", "net.jzajic.graalvm.client.messages.swarm.DnsConfig", "java.util.List" ],
+    "parameterTypes" : [ "java.lang.String", "java.util.Map", "java.lang.String", "java.util.List", "java.util.List", "java.util.List", "java.lang.String", "java.lang.String", "java.util.List", "java.lang.Boolean", "java.util.List", "java.lang.Long", "net.jzajic.graalvm.client.messages.ContainerConfig$Healthcheck", "java.util.List", "java.util.List", "net.jzajic.graalvm.client.messages.swarm.DnsConfig", "java.util.List" ],
     "name" : "create"
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.ContainerSpec",
@@ -158,9 +160,11 @@
     "name" : "getName"
   }, {
     "parameterTypes" : [ "java.lang.String" ],
-    "<init>" : "<init>"
+    "name" : "fromName"
   } ],
   "name" : "net.jzajic.graalvm.client.messages.Event$Type"
+}, {
+  "name" : "java.lang.Long"
 }, {
   "methods" : [ {
     "parameterTypes" : [ "java.lang.String", "java.lang.String", "java.lang.String", "java.util.List", "java.util.List", "java.lang.Long", "java.lang.Long", "java.util.Map" ],
@@ -185,6 +189,8 @@
     "name" : "labels"
   } ]
 }, {
+  "name" : "java.util.Map"
+}, {
   "methods" : [ {
     "parameterTypes" : [ "java.lang.String", "java.lang.String", "java.util.List", "java.lang.String" ],
     "name" : "create"
@@ -199,6 +205,8 @@
   }, {
     "name" : "joinToken"
   } ]
+}, {
+  "name" : "java.math.BigInteger"
 }, {
   "methods" : [ {
     "parameterTypes" : [ "java.lang.String", "java.lang.String" ],
@@ -290,6 +298,8 @@
   }, {
     "name" : "swarmSpec"
   } ]
+}, {
+  "name" : "java.util.Set"
 }, {
   "methods" : [ {
     "parameterTypes" : [ "java.lang.Long", "java.util.List" ],
@@ -644,6 +654,17 @@
   } ]
 }, {
   "methods" : [ {
+    "parameterTypes" : [ "java.util.Map", "java.util.List" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.Info$RegistryConfig",
+  "fields" : [ {
+    "name" : "indexConfigs"
+  }, {
+    "name" : "insecureRegistryCidrs"
+  } ]
+}, {
+  "methods" : [ {
     "parameterTypes" : [ "java.lang.String", "java.lang.String", "java.lang.String" ],
     "name" : "create"
   } ],
@@ -654,17 +675,6 @@
     "name" : "ipRange"
   }, {
     "name" : "gateway"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.util.Map", "java.util.List" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.Info$RegistryConfig",
-  "fields" : [ {
-    "name" : "indexConfigs"
-  }, {
-    "name" : "insecureRegistryCidrs"
   } ]
 }, {
   "methods" : [ {
@@ -774,6 +784,8 @@
     "name" : "updateStatus"
   } ]
 }, {
+  "name" : "java.lang.String"
+}, {
   "methods" : [ {
     "parameterTypes" : [ "java.util.Map", "java.util.Map", "java.util.Map", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String" ],
     "name" : "create"
@@ -873,15 +885,6 @@
     "name" : "kind"
   } ]
 }, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.lang.Long" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.swarm.Version",
-  "fields" : [ {
-    "name" : "index"
-  } ]
-}, {
   "name" : "net.jzajic.graalvm.client.messages.EndpointConfig$EndpointIpamConfig",
   "fields" : [ {
     "name" : "ipv4Address"
@@ -889,6 +892,15 @@
     "name" : "ipv6Address"
   }, {
     "name" : "linkLocalIPs"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.lang.Long" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.swarm.Version",
+  "fields" : [ {
+    "name" : "index"
   } ]
 }, {
   "methods" : [ {
@@ -904,7 +916,7 @@
   "name" : "net.jzajic.graalvm.client.messages.RegistryConfigs"
 }, {
   "methods" : [ {
-    "parameterTypes" : [ "java.util.List", "java.lang.Integer", "java.util.List", "java.util.List", "java.util.List", "java.util.List", "java.util.List", "java.lang.String", "java.util.List", "java.lang.Boolean", "java.util.Map", "java.util.List", "java.lang.Boolean", "java.util.List", "java.util.List", "java.util.List", "java.util.List", "java.util.List", "java.util.List", "java.util.List", "java.util.List", "java.lang.String", "java.util.List", "java.util.List", "java.lang.Long", "java.lang.Long", "java.lang.Integer", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.String", "java.lang.String", "java.lang.Long", "java.lang.String", "net.jzajic.graalvm.client.messages.HostConfig.RestartPolicy", "net.jzajic.graalvm.client.messages.LogConfig", "java.lang.String", "java.util.List", "java.lang.String", "java.lang.Long", "java.lang.Boolean", "java.lang.Integer", "java.lang.Boolean", "java.lang.Integer", "java.util.Map", "java.lang.Boolean", "java.lang.String", "java.util.Map" ],
+    "parameterTypes" : [ "java.util.List", "java.lang.Integer", "java.util.List", "java.util.List", "java.util.List", "java.util.List", "java.util.List", "java.lang.String", "java.util.List", "java.lang.Boolean", "java.util.Map", "java.util.List", "java.lang.Boolean", "java.util.List", "java.util.List", "java.util.List", "java.util.List", "java.util.List", "java.util.List", "java.util.List", "java.util.List", "java.lang.String", "java.util.List", "java.util.List", "java.lang.Long", "java.lang.Long", "java.lang.Integer", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.String", "java.lang.String", "java.lang.Long", "java.lang.String", "net.jzajic.graalvm.client.messages.HostConfig$RestartPolicy", "net.jzajic.graalvm.client.messages.LogConfig", "java.lang.String", "java.util.List", "java.lang.String", "java.lang.Long", "java.lang.Boolean", "java.lang.Integer", "java.lang.Boolean", "java.lang.Integer", "java.util.Map", "java.lang.Boolean", "java.lang.String", "java.util.Map" ],
     "name" : "create"
   } ],
   "name" : "net.jzajic.graalvm.client.messages.HostConfig",
@@ -1027,9 +1039,36 @@
     "name" : "getName"
   }, {
     "parameterTypes" : [ "java.lang.String" ],
-    "<init>" : "<init>"
+    "name" : "fromName"
   } ],
   "name" : "net.jzajic.graalvm.client.messages.Network$Type"
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.lang.String", "java.lang.Boolean", "java.lang.Long", "net.jzajic.graalvm.client.messages.ProcessConfig", "java.lang.Boolean", "java.lang.Boolean", "java.lang.Boolean", "net.jzajic.graalvm.client.messages.ContainerInfo", "java.lang.String", "java.lang.String" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.ExecState",
+  "fields" : [ {
+    "name" : "id"
+  }, {
+    "name" : "running"
+  }, {
+    "name" : "exitCode"
+  }, {
+    "name" : "processConfig"
+  }, {
+    "name" : "openStdin"
+  }, {
+    "name" : "openStdout"
+  }, {
+    "name" : "openStderr"
+  }, {
+    "name" : "container"
+  }, {
+    "name" : "containerId"
+  }, {
+    "name" : "Pid"
+  } ]
 }, {
   "methods" : [ {
     "parameterTypes" : [ "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String", "net.jzajic.graalvm.client.messages.Ipam", "java.util.Map", "java.util.Map", "java.lang.Boolean", "java.lang.Boolean", "java.util.Map", "java.lang.Boolean" ],
@@ -1061,28 +1100,12 @@
   } ]
 }, {
   "methods" : [ {
-    "parameterTypes" : [ "java.lang.String", "java.lang.Boolean", "java.lang.Long", "net.jzajic.graalvm.client.messages.ProcessConfig", "java.lang.Boolean", "java.lang.Boolean", "java.lang.Boolean", "net.jzajic.graalvm.client.messages.ContainerInfo", "java.lang.String" ],
+    "parameterTypes" : [ "java.lang.String" ],
     "name" : "create"
   } ],
-  "name" : "net.jzajic.graalvm.client.messages.ExecState",
+  "name" : "net.jzajic.graalvm.client.messages.swarm.Spread",
   "fields" : [ {
-    "name" : "id"
-  }, {
-    "name" : "running"
-  }, {
-    "name" : "exitCode"
-  }, {
-    "name" : "processConfig"
-  }, {
-    "name" : "openStdin"
-  }, {
-    "name" : "openStdout"
-  }, {
-    "name" : "openStderr"
-  }, {
-    "name" : "container"
-  }, {
-    "name" : "containerId"
+    "name" : "spreadDescriptor"
   } ]
 }, {
   "methods" : [ {
@@ -1106,15 +1129,6 @@
     "name" : "ioTimeRecursive"
   }, {
     "name" : "sectorsRecursive"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.lang.String" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.swarm.Spread",
-  "fields" : [ {
-    "name" : "spreadDescriptor"
   } ]
 }, {
   "methods" : [ {
@@ -1183,7 +1197,7 @@
   } ]
 }, {
   "methods" : [ {
-    "parameterTypes" : [ "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.Boolean", "java.lang.Boolean", "java.lang.Boolean", "java.util.List", "java.util.Set", "java.lang.Boolean", "java.lang.Boolean", "java.lang.Boolean", "java.util.List", "java.util.List", "java.lang.String", "java.util.Set", "java.lang.String", "java.util.List", "java.lang.Boolean", "java.util.List", "java.util.Map", "java.lang.String", "net.jzajic.graalvm.client.messages.HostConfig", "java.lang.String", "net.jzajic.graalvm.client.messages.ContainerConfig.Healthcheck", "net.jzajic.graalvm.client.messages.ContainerConfig.NetworkingConfig" ],
+    "parameterTypes" : [ "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.Boolean", "java.lang.Boolean", "java.lang.Boolean", "java.util.List", "java.util.Set", "java.lang.Boolean", "java.lang.Boolean", "java.lang.Boolean", "java.util.List", "java.util.List", "java.lang.String", "java.util.Set", "java.lang.String", "java.util.List", "java.lang.Boolean", "java.util.List", "java.util.Map", "java.lang.String", "net.jzajic.graalvm.client.messages.HostConfig", "java.lang.String", "net.jzajic.graalvm.client.messages.ContainerConfig$Healthcheck", "net.jzajic.graalvm.client.messages.ContainerConfig$NetworkingConfig" ],
     "name" : "create"
   } ],
   "name" : "net.jzajic.graalvm.client.messages.ContainerConfig",
@@ -1315,6 +1329,8 @@
     "name" : "taskDefaults"
   } ]
 }, {
+  "name" : "java.util.Date"
+}, {
   "methods" : [ {
     "parameterTypes" : [ "java.lang.String", "java.lang.String" ],
     "name" : "create"
@@ -1344,7 +1360,7 @@
   } ]
 }, {
   "methods" : [ {
-    "parameterTypes" : [ "net.jzajic.graalvm.client.messages.Event.Type", "java.lang.String", "net.jzajic.graalvm.client.messages.Event.Actor", "java.util.Date", "java.lang.Long" ],
+    "parameterTypes" : [ "net.jzajic.graalvm.client.messages.Event$Type", "java.lang.String", "net.jzajic.graalvm.client.messages.Event$Actor", "java.util.Date", "java.lang.Long" ],
     "name" : "create"
   } ],
   "name" : "net.jzajic.graalvm.client.messages.Event",
@@ -1415,17 +1431,6 @@
   } ]
 }, {
   "methods" : [ {
-    "parameterTypes" : [ "java.util.List", "java.util.List" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.swarm.Placement",
-  "fields" : [ {
-    "name" : "constraints"
-  }, {
-    "name" : "preferences"
-  } ]
-}, {
-  "methods" : [ {
     "parameterTypes" : [ "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String", "net.jzajic.graalvm.client.messages.ProgressDetail" ],
     "name" : "create"
   } ],
@@ -1442,6 +1447,17 @@
     "name" : "progress"
   }, {
     "name" : "progressDetail"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.util.List", "java.util.List" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.swarm.Placement",
+  "fields" : [ {
+    "name" : "constraints"
+  }, {
+    "name" : "preferences"
   } ]
 }, {
   "methods" : [ {
@@ -1523,7 +1539,7 @@
   } ]
 }, {
   "methods" : [ {
-    "parameterTypes" : [ "net.jzajic.graalvm.client.messages.CpuStats.CpuUsage", "java.lang.Long", "net.jzajic.graalvm.client.messages.CpuStats.ThrottlingData" ],
+    "parameterTypes" : [ "net.jzajic.graalvm.client.messages.CpuStats$CpuUsage", "java.lang.Long", "net.jzajic.graalvm.client.messages.CpuStats$ThrottlingData" ],
     "name" : "create"
   } ],
   "name" : "net.jzajic.graalvm.client.messages.CpuStats",
@@ -1541,16 +1557,7 @@
   "name" : "net.jzajic.graalvm.client.messages.swarm.GlobalService"
 }, {
   "methods" : [ {
-    "parameterTypes" : [ "java.lang.Long" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.swarm.DispatcherConfig",
-  "fields" : [ {
-    "name" : "heartbeatPeriod"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.lang.String", "java.lang.String", "java.lang.Integer", "java.lang.Integer", "net.jzajic.graalvm.client.messages.swarm.PortConfig.PortConfigPublishMode" ],
+    "parameterTypes" : [ "java.lang.String", "java.lang.String", "java.lang.Integer", "java.lang.Integer", "net.jzajic.graalvm.client.messages.swarm.PortConfig$PortConfigPublishMode" ],
     "name" : "create"
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.PortConfig",
@@ -1564,6 +1571,15 @@
     "name" : "publishedPort"
   }, {
     "name" : "publishMode"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.lang.Long" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.swarm.DispatcherConfig",
+  "fields" : [ {
+    "name" : "heartbeatPeriod"
   } ]
 }, {
   "methods" : [ {
@@ -1689,6 +1705,15 @@
   } ]
 }, {
   "methods" : [ {
+    "parameterTypes" : [ "net.jzajic.graalvm.client.messages.swarm.Driver" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.swarm.TaskDefaults",
+  "fields" : [ {
+    "name" : "logDriver"
+  } ]
+}, {
+  "methods" : [ {
     "parameterTypes" : [ "java.lang.String", "java.lang.String" ],
     "name" : "create"
   } ],
@@ -1697,15 +1722,6 @@
     "name" : "networkId"
   }, {
     "name" : "addr"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "net.jzajic.graalvm.client.messages.swarm.Driver" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.swarm.TaskDefaults",
-  "fields" : [ {
-    "name" : "logDriver"
   } ]
 }, {
   "methods" : [ {
@@ -1752,6 +1768,8 @@
   }, {
     "name" : "official"
   } ]
+}, {
+  "name" : "java.util.List"
 }, {
   "methods" : [ {
     "parameterTypes" : [ "java.lang.String", "java.lang.String", "java.lang.String", "com.google.common.collect.ImmutableList", "java.lang.String", "com.google.common.collect.ImmutableList" ],
@@ -1801,7 +1819,7 @@
   } ]
 }, {
   "methods" : [ {
-    "parameterTypes" : [ "java.lang.String", "java.util.Date", "java.lang.String", "java.util.List", "net.jzajic.graalvm.client.messages.ContainerConfig", "net.jzajic.graalvm.client.messages.HostConfig", "net.jzajic.graalvm.client.messages.ContainerState", "java.lang.String", "net.jzajic.graalvm.client.messages.NetworkSettings", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String", "java.util.Map", "java.util.Map", "java.lang.String", "java.util.List", "java.lang.String", "java.lang.Long", "java.util.List", "net.jzajic.graalvm.client.messages.ContainerInfo.Node" ],
+    "parameterTypes" : [ "java.lang.String", "java.util.Date", "java.lang.String", "java.util.List", "net.jzajic.graalvm.client.messages.ContainerConfig", "net.jzajic.graalvm.client.messages.HostConfig", "net.jzajic.graalvm.client.messages.ContainerState", "java.lang.String", "net.jzajic.graalvm.client.messages.NetworkSettings", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.String", "java.util.Map", "java.util.Map", "java.lang.String", "java.util.List", "java.lang.String", "java.lang.Long", "java.util.List", "net.jzajic.graalvm.client.messages.ContainerInfo$Node" ],
     "name" : "create"
   } ],
   "name" : "net.jzajic.graalvm.client.messages.ContainerInfo",
@@ -1964,6 +1982,15 @@
   } ]
 }, {
   "methods" : [ {
+    "parameterTypes" : [ "java.util.List" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.ContainerUpdate",
+  "fields" : [ {
+    "name" : "warnings"
+  } ]
+}, {
+  "methods" : [ {
     "parameterTypes" : [ "int", "int", "java.lang.String", "java.lang.String" ],
     "name" : "create"
   } ],
@@ -1976,15 +2003,6 @@
     "name" : "type"
   }, {
     "name" : "ip"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.util.List" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.ContainerUpdate",
-  "fields" : [ {
-    "name" : "warnings"
   } ]
 }, {
   "methods" : [ {
@@ -2029,6 +2047,10 @@
   }, {
     "name" : "mode"
   } ]
+}, {
+  "name" : "com.google.common.collect.ImmutableList"
+}, {
+  "name" : "java.lang.Boolean"
 }, {
   "methods" : [ {
     "parameterTypes" : [ "java.lang.String", "java.util.List", "java.util.Map" ],
@@ -2089,15 +2111,6 @@
   } ]
 }, {
   "methods" : [ {
-    "parameterTypes" : [ "java.lang.Integer" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.swarm.OrchestrationConfig",
-  "fields" : [ {
-    "name" : "taskHistoryRetentionLimit"
-  } ]
-}, {
-  "methods" : [ {
     "parameterTypes" : [ "java.lang.String", "java.util.Map", "java.util.List" ],
     "name" : "create"
   } ],
@@ -2111,7 +2124,16 @@
   } ]
 }, {
   "methods" : [ {
-    "parameterTypes" : [ "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.Integer", "java.lang.Integer", "java.lang.Integer", "java.lang.Integer", "java.lang.Boolean", "java.lang.Boolean", "java.lang.Boolean", "java.lang.String", "java.lang.String", "java.util.List", "java.lang.String", "java.lang.Boolean", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.Boolean", "java.lang.Integer", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.Boolean", "java.lang.String", "java.util.List", "java.lang.Long", "java.lang.Boolean", "java.lang.Integer", "java.lang.Integer", "java.lang.Integer", "java.lang.Integer", "java.lang.String", "java.lang.String", "java.lang.Boolean", "java.lang.String", "java.lang.String", "net.jzajic.graalvm.client.messages.Info.Plugins", "net.jzajic.graalvm.client.messages.Info.RegistryConfig", "java.lang.String", "java.lang.Boolean", "net.jzajic.graalvm.client.messages.swarm.SwarmInfo", "java.util.List", "java.util.Date" ],
+    "parameterTypes" : [ "java.lang.Integer" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.swarm.OrchestrationConfig",
+  "fields" : [ {
+    "name" : "taskHistoryRetentionLimit"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.Integer", "java.lang.Integer", "java.lang.Integer", "java.lang.Integer", "java.lang.Boolean", "java.lang.Boolean", "java.lang.Boolean", "java.lang.String", "java.lang.String", "java.util.List", "java.lang.String", "java.lang.Boolean", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.Boolean", "java.lang.Integer", "java.lang.String", "java.lang.String", "java.lang.String", "java.lang.Boolean", "java.lang.String", "java.util.List", "java.lang.Long", "java.lang.Boolean", "java.lang.Integer", "java.lang.Integer", "java.lang.Integer", "java.lang.Integer", "java.lang.String", "java.lang.String", "java.lang.Boolean", "java.lang.String", "java.lang.String", "net.jzajic.graalvm.client.messages.Info$Plugins", "net.jzajic.graalvm.client.messages.Info$RegistryConfig", "java.lang.String", "java.lang.Boolean", "net.jzajic.graalvm.client.messages.swarm.SwarmInfo", "java.util.List", "java.util.Date" ],
     "name" : "create"
   } ],
   "name" : "net.jzajic.graalvm.client.messages.Info",
@@ -2225,7 +2247,7 @@
   } ]
 }, {
   "methods" : [ {
-    "parameterTypes" : [ "java.lang.String", "java.lang.Boolean", "java.lang.Boolean", "java.lang.Boolean", "java.lang.Integer", "java.lang.Long", "java.util.Date", "java.util.Date", "java.lang.String", "java.lang.Boolean", "net.jzajic.graalvm.client.messages.ContainerState.Health" ],
+    "parameterTypes" : [ "java.lang.String", "java.lang.Boolean", "java.lang.Boolean", "java.lang.Boolean", "java.lang.Integer", "java.lang.Long", "java.util.Date", "java.util.Date", "java.lang.String", "java.lang.Boolean", "net.jzajic.graalvm.client.messages.ContainerState$Health" ],
     "name" : "create"
   } ],
   "name" : "net.jzajic.graalvm.client.messages.ContainerState",
@@ -2345,17 +2367,6 @@
   } ]
 }, {
   "methods" : [ {
-    "parameterTypes" : [ "java.lang.String", "java.lang.String" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.PortBinding",
-  "fields" : [ {
-    "name" : "hostIp"
-  }, {
-    "name" : "hostPort"
-  } ]
-}, {
-  "methods" : [ {
     "parameterTypes" : [ "java.lang.String", "net.jzajic.graalvm.client.messages.swarm.Version", "java.util.Date", "java.util.Date", "net.jzajic.graalvm.client.messages.swarm.NodeSpec", "net.jzajic.graalvm.client.messages.swarm.NodeDescription", "net.jzajic.graalvm.client.messages.swarm.NodeStatus", "net.jzajic.graalvm.client.messages.swarm.ManagerStatus" ],
     "name" : "create"
   } ],
@@ -2376,6 +2387,17 @@
     "name" : "status"
   }, {
     "name" : "managerStatus"
+  } ]
+}, {
+  "methods" : [ {
+    "parameterTypes" : [ "java.lang.String", "java.lang.String" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.PortBinding",
+  "fields" : [ {
+    "name" : "hostIp"
+  }, {
+    "name" : "hostPort"
   } ]
 }, {
   "methods" : [ {
@@ -2414,7 +2436,7 @@
     "name" : "getName"
   }, {
     "parameterTypes" : [ "java.lang.String" ],
-    "<init>" : "<init>"
+    "name" : "fromName"
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.PortConfig$PortConfigPublishMode"
 }, {
@@ -2430,7 +2452,7 @@
   } ]
 }, {
   "methods" : [ {
-    "parameterTypes" : [ "net.jzajic.graalvm.client.messages.swarm.EndpointSpec.Mode", "java.util.List" ],
+    "parameterTypes" : [ "net.jzajic.graalvm.client.messages.swarm.EndpointSpec$Mode", "java.util.List" ],
     "name" : "create"
   } ],
   "name" : "net.jzajic.graalvm.client.messages.swarm.EndpointSpec",
@@ -2441,7 +2463,7 @@
   } ]
 }, {
   "methods" : [ {
-    "parameterTypes" : [ "net.jzajic.graalvm.client.messages.MemoryStats.Stats", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long" ],
+    "parameterTypes" : [ "net.jzajic.graalvm.client.messages.MemoryStats$Stats", "java.lang.Long", "java.lang.Long", "java.lang.Long", "java.lang.Long" ],
     "name" : "create"
   } ],
   "name" : "net.jzajic.graalvm.client.messages.MemoryStats",
@@ -2482,6 +2504,15 @@
   } ]
 }, {
   "methods" : [ {
+    "parameterTypes" : [ "java.lang.Long" ],
+    "name" : "create"
+  } ],
+  "name" : "net.jzajic.graalvm.client.messages.swarm.ReplicatedService",
+  "fields" : [ {
+    "name" : "replicas"
+  } ]
+}, {
+  "methods" : [ {
     "parameterTypes" : [ "java.util.Date", "java.util.Date", "java.lang.Long", "java.lang.String" ],
     "name" : "create"
   } ],
@@ -2494,14 +2525,5 @@
     "name" : "exitCode"
   }, {
     "name" : "output"
-  } ]
-}, {
-  "methods" : [ {
-    "parameterTypes" : [ "java.lang.Long" ],
-    "name" : "create"
-  } ],
-  "name" : "net.jzajic.graalvm.client.messages.swarm.ReplicatedService",
-  "fields" : [ {
-    "name" : "replicas"
   } ]
 } ]
