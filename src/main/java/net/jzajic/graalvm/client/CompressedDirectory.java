@@ -321,59 +321,6 @@ class CompressedDirectory implements Closeable {
       return false;
     }
 
-    private static int getFileMode(Path file) throws IOException {
-      if (isPosixComplantFs()) {
-        return getPosixFileMode(file);
-      } else {
-        return DEFAULT_FILE_MODE;
-      }
-    }
-
-    private static boolean isPosixComplantFs() {
-      return FileSystems.getDefault().supportedFileAttributeViews().contains(POSIX_FILE_VIEW);
-    }
-
-    private static int getPosixFileMode(Path file) throws IOException {
-      final PosixFileAttributes attr = Files.readAttributes(file, PosixFileAttributes.class);
-      final Set<PosixFilePermission> perm = attr.permissions();
-
-      // retain permissions, note these values are octal
-      //noinspection OctalInteger
-      int mode = 0100000;
-      //noinspection OctalInteger
-      mode += 0100 * getModeFromPermissions(
-          perm.contains(PosixFilePermission.OWNER_READ),
-          perm.contains(PosixFilePermission.OWNER_WRITE),
-          perm.contains(PosixFilePermission.OWNER_EXECUTE));
-
-      //noinspection OctalInteger
-      mode += 010 * getModeFromPermissions(
-          perm.contains(PosixFilePermission.GROUP_READ),
-          perm.contains(PosixFilePermission.GROUP_WRITE),
-          perm.contains(PosixFilePermission.GROUP_EXECUTE));
-
-      mode += getModeFromPermissions(
-          perm.contains(PosixFilePermission.OTHERS_READ),
-          perm.contains(PosixFilePermission.OTHERS_WRITE),
-          perm.contains(PosixFilePermission.OTHERS_EXECUTE));
-
-      return mode;
-    }
-
-    private static int getModeFromPermissions(boolean read, boolean write, boolean execute) {
-      int result = 0;
-      if (read) {
-        result += 4;
-      }
-      if (write) {
-        result += 2;
-      }
-      if (execute) {
-        result += 1;
-      }
-      return result;
-    }
-
   }
 
   /**
@@ -439,4 +386,93 @@ class CompressedDirectory implements Closeable {
       return this.pattern;
     }
   }
+
+	public static CompressedDirectory singleFile(Path sourcePath) throws IOException {
+		final Path file = Files.createTempFile("docker-client-", ".tar.gz");
+
+    try (final OutputStream fileOut = Files.newOutputStream(file);
+         final GzipCompressorOutputStream gzipOut = new GzipCompressorOutputStream(fileOut);
+         final TarArchiveOutputStream tarOut = new TarArchiveOutputStream(gzipOut)) {
+      tarOut.setLongFileMode(LONGFILE_POSIX);
+      tarOut.setBigNumberMode(BIGNUMBER_POSIX);
+      long size = Files.size(sourcePath);
+      
+      final TarArchiveEntry entry = new TarArchiveEntry(file.toFile());
+      entry.setName(sourcePath.getFileName().toString());
+      entry.setMode(getFileMode(sourcePath));
+      entry.setSize(size);
+      tarOut.putArchiveEntry(entry);
+      Files.copy(sourcePath, tarOut);
+      tarOut.closeArchiveEntry();
+      tarOut.flush();
+      tarOut.finish();
+      
+    } catch (Throwable t) {
+      // If an error occurs, delete temporary file before rethrowing exclude.
+      try {
+        Files.delete(file);
+      } catch (IOException e) {
+        // So we don't lose track of the reason the file was deleted... might be important
+        t.addSuppressed(e);
+      }
+
+      throw t;
+    }
+
+    return new CompressedDirectory(file);
+	}
+	
+	protected static int getFileMode(Path file) throws IOException {
+    if (isPosixComplantFs()) {
+      return getPosixFileMode(file);
+    } else {
+      return DEFAULT_FILE_MODE;
+    }
+  }
+
+  private static boolean isPosixComplantFs() {
+    return FileSystems.getDefault().supportedFileAttributeViews().contains(POSIX_FILE_VIEW);
+  }
+
+  private static int getPosixFileMode(Path file) throws IOException {
+    final PosixFileAttributes attr = Files.readAttributes(file, PosixFileAttributes.class);
+    final Set<PosixFilePermission> perm = attr.permissions();
+
+    // retain permissions, note these values are octal
+    //noinspection OctalInteger
+    int mode = 0100000;
+    //noinspection OctalInteger
+    mode += 0100 * getModeFromPermissions(
+        perm.contains(PosixFilePermission.OWNER_READ),
+        perm.contains(PosixFilePermission.OWNER_WRITE),
+        perm.contains(PosixFilePermission.OWNER_EXECUTE));
+
+    //noinspection OctalInteger
+    mode += 010 * getModeFromPermissions(
+        perm.contains(PosixFilePermission.GROUP_READ),
+        perm.contains(PosixFilePermission.GROUP_WRITE),
+        perm.contains(PosixFilePermission.GROUP_EXECUTE));
+
+    mode += getModeFromPermissions(
+        perm.contains(PosixFilePermission.OTHERS_READ),
+        perm.contains(PosixFilePermission.OTHERS_WRITE),
+        perm.contains(PosixFilePermission.OTHERS_EXECUTE));
+
+    return mode;
+  }
+
+  private static int getModeFromPermissions(boolean read, boolean write, boolean execute) {
+    int result = 0;
+    if (read) {
+      result += 4;
+    }
+    if (write) {
+      result += 2;
+    }
+    if (execute) {
+      result += 1;
+    }
+    return result;
+  }
+  
 }

@@ -15,6 +15,10 @@ public class JsonEntity<T> extends AbstractHttpEntity {
 
 	private byte[] content;
 
+	public JsonEntity(final String object) {
+		content = object.getBytes();
+	}
+	
 	public JsonEntity(final T object) {		
 		try {
 			this.content = ObjectMapperProvider
@@ -22,6 +26,10 @@ public class JsonEntity<T> extends AbstractHttpEntity {
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static <T> JsonEntity<T> create(String object) {
+		return new JsonEntity<T>(object);
 	}
 	
 	public static <T> JsonEntity<T> create(T object) {

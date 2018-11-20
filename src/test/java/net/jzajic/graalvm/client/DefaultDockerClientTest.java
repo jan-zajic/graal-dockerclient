@@ -1338,7 +1338,7 @@ public class DefaultDockerClientTest {
 
     try (final InputStream tarStream =
              Resources.getResource("dockerCopyToContainer.tar.gz").openStream()) {
-      sut.copyToContainer(tarStream, containerId, "/tmp");
+      sut.copyToContainer(tarStream, null, containerId, "/tmp");
     } catch (Exception e) {
       fail("error to copy files to container");
     }

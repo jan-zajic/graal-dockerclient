@@ -1368,7 +1368,7 @@ public interface DockerClient extends Closeable {
   void copyToContainer(final Path directory, String containerId, String path)
       throws DockerException, IOException;
 
-  void copyToContainer(final InputStream tarStream, String containerId, String path)
+  void copyToContainer(final InputStream tarStream, Long fileSize, String containerId, String path)
           throws DockerException, IOException;
 
   /**

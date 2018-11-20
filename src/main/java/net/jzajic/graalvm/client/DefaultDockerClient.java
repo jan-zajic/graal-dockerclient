@@ -40,11 +40,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.InterruptedIOException;
 import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.SocketTimeoutException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -86,6 +84,7 @@ import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
 import org.apache.http.conn.ConnectTimeoutException;
+import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
 import org.apache.http.conn.socket.PlainConnectionSocketFactory;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
@@ -98,6 +97,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.ProxyAuthenticationStrategy;
+import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -194,6 +194,7 @@ import net.jzajic.graalvm.client.messages.swarm.SwarmSpec;
 import net.jzajic.graalvm.client.messages.swarm.Task;
 import net.jzajic.graalvm.client.messages.swarm.UnlockKey;
 import net.jzajic.graalvm.client.npipe.NpipeConnectionSocketFactory;
+import net.jzajic.graalvm.docker.BasicBodyResponseHandler;
 
 public class DefaultDockerClient implements DockerClient, Closeable {
 
@@ -447,8 +448,8 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 			this.uri = originalUri;
 		}
 
-		final PoolingHttpClientConnectionManager cm = getConnectionManager(builder);
-		final PoolingHttpClientConnectionManager noTimeoutCm = getConnectionManager(builder);
+		final HttpClientConnectionManager cm = getConnectionManager(builder);
+		final HttpClientConnectionManager noTimeoutCm = getConnectionManager(builder);
 
 		final RequestConfig.Builder requestConfigBuilder = RequestConfig
 				.custom()
@@ -537,14 +538,19 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 		return fromNullable(uri.getHost()).or("localhost");
 	}
 
-	private PoolingHttpClientConnectionManager getConnectionManager(Builder builder) {
-		final PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager(getSchemeRegistry(builder));
-
-		// Use all available connections instead of artificially limiting ourselves to 2 per server.
-		cm.setMaxTotal(builder.connectionPoolSize);
-		cm.setDefaultMaxPerRoute(cm.getMaxTotal());
-
-		return cm;
+	private HttpClientConnectionManager getConnectionManager(Builder builder) {
+		if (builder.uri.getScheme().equals(NPIPE_SCHEME)) {
+			BasicHttpClientConnectionManager bm = new BasicHttpClientConnectionManager(getSchemeRegistry(builder));
+			return bm;
+		} else {
+			final PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager(getSchemeRegistry(builder));
+	
+			// Use all available connections instead of artificially limiting ourselves to 2 per server.
+			cm.setMaxTotal(builder.connectionPoolSize);
+			cm.setDefaultMaxPerRoute(cm.getMaxTotal());
+	
+			return cm;
+		}
 	}
 
 	private Registry<ConnectionSocketFactory> getSchemeRegistry(final Builder builder) {		
@@ -655,6 +661,9 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 			if (contentType != null) {
 				req.addHeader(HttpHeaders.ACCEPT, contentType);
 			}
+			if(!req.containsHeader(HttpHeaders.CONTENT_TYPE) && entity instanceof JsonEntity) {
+				req.addHeader(HttpHeaders.CONTENT_TYPE, ContentType.APPLICATION_JSON.getMimeType());
+			}
 			req = headers(req);
 			if (req instanceof HttpEntityEnclosingRequestBase && entity != null) {
 				((HttpEntityEnclosingRequestBase) req).setEntity(entity);
@@ -677,7 +686,7 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 				CloseableHttpResponse response = client.execute(req);
 				return (T) EntityHandler.responseHandler(DefaultLogStream::ofEntity).handleResponse(response);
 			} else if (type != null && CharSequence.class.isAssignableFrom(type.getRawClass())) {
-				return (T) client.execute(req, new BasicResponseHandler());			
+				return (T) client.execute(req, new BasicBodyResponseHandler());			
 			} else {
 				return client.execute(req, EntityHandler.objectResponseHandler(type));
 			}
@@ -1153,16 +1162,23 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 	}
 
 	@Override
-	public void copyToContainer(final Path directory, String containerId, String path)
+	public void copyToContainer(final Path sourcePath, String containerId, String targetPath)
 			throws DockerException, IOException {
-		try (final CompressedDirectory compressedDirectory = CompressedDirectory.create(directory);
-				final InputStream fileStream = Files.newInputStream(compressedDirectory.file())) {
-			copyToContainer(fileStream, containerId, path);
+		if(Files.isDirectory(sourcePath)) {
+			try (final CompressedDirectory compressedDirectory = CompressedDirectory.create(sourcePath);
+					final InputStream fileStream = Files.newInputStream(compressedDirectory.file())) {
+				copyToContainer(fileStream, Files.size(compressedDirectory.file()), containerId, targetPath);
+			}
+		} else {
+			try (final CompressedDirectory compressedDirectory = CompressedDirectory.singleFile(sourcePath);
+					final InputStream fileStream = Files.newInputStream(compressedDirectory.file())) {
+				copyToContainer(fileStream, Files.size(compressedDirectory.file()), containerId, targetPath);
+			}
 		}
 	}
 
 	@Override
-	public void copyToContainer(InputStream tarStream, String containerId, String path)
+	public void copyToContainer(InputStream tarStream, Long fileSize, String containerId, String path)
 			throws DockerException {
 		final URIResource resource = resource();
 		resource.addPath("containers/" + containerId + "/archive");
@@ -1175,7 +1191,7 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 						String.class,
 						resource,
 						ContentType.APPLICATION_JSON,
-						new InputStreamEntity(tarStream, ContentType.create("application/tar")));
+						fileSize != null ? new InputStreamEntity(tarStream, fileSize, ContentType.create("application/tar")) : new InputStreamEntity(tarStream, ContentType.create("application/tar")));
 		} catch (DockerRequestException e) {
 			switch (e.status()) {
 			case 400:
@@ -1833,9 +1849,12 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 			throw new DockerException(e);
 		}
 
+		HttpPost post = new HttpPost();
+		post.addHeader(HttpHeaders.CONTENT_TYPE, ContentType.APPLICATION_JSON.getMimeType());
+		
 		try {
 			return request(
-					new HttpPost(),
+						post,
 						ExecCreation.class,
 						resource,
 						ContentType.APPLICATION_JSON,
@@ -1871,10 +1890,12 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 		} catch (IOException e) {
 			throw new DockerException(e);
 		}
-
+		
+		HttpPost post = new HttpPost();
+		post.addHeader(HttpHeaders.CONTENT_TYPE, ContentType.APPLICATION_JSON.getMimeType());
 		try {
 			return request(
-					new HttpPost(),
+					post,
 						LogStream.class,
 						resource,
 						ContentType.create("application/vnd.docker.raw-stream"),
