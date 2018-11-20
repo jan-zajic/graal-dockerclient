@@ -64,7 +64,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -75,9 +74,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpResponseException;
-import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpDelete;
@@ -95,7 +92,6 @@ import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.entity.AbstractHttpEntity;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.InputStreamEntity;
-import org.apache.http.impl.client.AbstractResponseHandler;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -110,7 +106,6 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Optional;
@@ -198,6 +193,7 @@ import net.jzajic.graalvm.client.messages.swarm.SwarmJoin;
 import net.jzajic.graalvm.client.messages.swarm.SwarmSpec;
 import net.jzajic.graalvm.client.messages.swarm.Task;
 import net.jzajic.graalvm.client.messages.swarm.UnlockKey;
+import net.jzajic.graalvm.client.npipe.NpipeConnectionSocketFactory;
 
 public class DefaultDockerClient implements DockerClient, Closeable {
 
@@ -322,6 +318,7 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 	// ==========================================================================
 
 	private static final String UNIX_SCHEME = "unix";
+	private static final String NPIPE_SCHEME = "npipe";
 
 	private static final Logger log = LoggerFactory.getLogger(DefaultDockerClient.class);
 
@@ -444,6 +441,8 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 
 		if (originalUri.getScheme().equals(UNIX_SCHEME)) {
 			this.uri = UnixConnectionSocketFactory.sanitizeUri(originalUri);
+		} else if (originalUri.getScheme().equals(NPIPE_SCHEME)) {
+			this.uri = NpipeConnectionSocketFactory.sanitizeUri(originalUri);
 		} else {
 			this.uri = originalUri;
 		}
@@ -568,7 +567,11 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 		if (builder.uri.getScheme().equals(UNIX_SCHEME)) {
 			registryBuilder.register(UNIX_SCHEME, new UnixConnectionSocketFactory(builder.uri));
 		}
-
+		
+		if (builder.uri.getScheme().equals(NPIPE_SCHEME)) {
+			registryBuilder.register(NPIPE_SCHEME, new NpipeConnectionSocketFactory(builder.uri));
+		}
+		
 		return registryBuilder.build();
 	}
 
@@ -2593,7 +2596,7 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 	@Override
 	public ExecState execInspect(final String execId) throws DockerException {
 		final URIResource resource = resource().addPath("exec").addPath(execId).addPath("json");
-
+				
 		try {
 			return request(new HttpGet(), ExecState.class, resource, ContentType.APPLICATION_JSON);
 		} catch (DockerRequestException e) {
@@ -3150,6 +3153,8 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 					.build();
 
 		if (endpoint.startsWith(UNIX_SCHEME + "://")) {
+			builder.uri(endpoint);
+		} else if (endpoint.startsWith(NPIPE_SCHEME + "://")) {
 			builder.uri(endpoint);
 		} else {
 			final String stripped = endpoint.replaceAll(".*://", "");
