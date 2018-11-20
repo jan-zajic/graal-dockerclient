@@ -5,9 +5,13 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpResponseException;
 import org.apache.http.client.ResponseHandler;
-import org.apache.http.impl.client.AbstractResponseHandler;
 import org.apache.http.impl.io.EmptyInputStream;
+import org.apache.http.util.EntityUtils;
 
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,11 +27,22 @@ public interface EntityHandler<T> {
   public abstract T handleEntity(HttpEntity entity) throws IOException;
 	
   default ResponseHandler<T> asResponseHandler() {
-  	return new AbstractResponseHandler<T>() {
+  	return new ResponseHandler<T>() {
 
-			@Override
 			public T handleEntity(HttpEntity entity) throws IOException {
 				return EntityHandler.this.handleEntity(entity);
+			}
+
+			@Override
+			public T handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
+				final StatusLine statusLine = response.getStatusLine();
+        final HttpEntity entity = response.getEntity();
+        if (statusLine.getStatusCode() >= 300) {
+            String errorResp = EntityUtils.toString(entity);
+            throw new HttpResponseException(statusLine.getStatusCode(),
+                    statusLine.getReasonPhrase() + ": " + errorResp);
+        }
+        return entity == null ? null : handleEntity(entity);
 			}
 		};
   }

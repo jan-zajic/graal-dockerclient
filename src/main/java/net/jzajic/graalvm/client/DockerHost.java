@@ -189,7 +189,7 @@ public class DockerHost {
     if (os.equalsIgnoreCase("linux") || os.contains("mac")) {
       return DEFAULT_UNIX_ENDPOINT;
     //Windows 10 64bit: Pro, Enterprise or Education (1607 Anniversary Update, Build 14393 or later).
-    } else if(System.getProperty("os.name").equalsIgnoreCase("Windows 10")) {
+    } else if(os.equalsIgnoreCase("Windows 10")) {
     	return DEFAULT_WINDOWS_ENDPOINT;
     } else {
       return DEFAULT_ADDRESS + ":" + defaultPort();

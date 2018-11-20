@@ -768,7 +768,7 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 				filterValueList.add(param.value());
 				filters.put(param.name(), filterValueList);
 			} else {
-				resource.addParameter(urlEncode(param.name()), urlEncode(param.value()));
+				resource.addParameter(param.name(), param.value());
 			}
 		}
 
@@ -792,25 +792,6 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 	}
 
 	/**
-	 * URL-encodes a string when used as a URL query parameter's value.
-	 *
-	 * @param unencoded
-	 *          A string that may contain characters not allowed in URL query
-	 *          parameters.
-	 * @return URL-encoded String
-	 * @throws DockerException
-	 *           if there's an UnsupportedEncodingException
-	 */
-	private String urlEncode(final String unencoded) throws DockerException {
-		try {
-			final String encode = URLEncoder.encode(unencoded, UTF_8.name());
-			return encode.replaceAll("\\+", "%20");
-		} catch (UnsupportedEncodingException e) {
-			throw new DockerException(e);
-		}
-	}
-
-	/**
 	 * Takes a map of filters and URL-encodes them. If the map is empty or an
 	 * exception occurs, return null.
 	 *
@@ -824,7 +805,7 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 		try {
 			final String unencodedFilters = objectMapper().writeValueAsString(filters);
 			if (!unencodedFilters.isEmpty()) {
-				return urlEncode(unencodedFilters);
+				return unencodedFilters;
 			}
 		} catch (IOException e) {
 			throw new DockerException(e);
@@ -1451,7 +1432,7 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 			if (images.length > 1) {
 				for (final String image : images) {
 					if (!isNullOrEmpty(image)) {
-						resource = resource.addParameter("names", urlEncode(image));
+						resource = resource.addParameter("names", image);
 					}
 				}
 			}
@@ -1470,7 +1451,7 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 
 		final URIResource resource = resource().addPath("images").addPath("get");
 		for (final String image : images) {
-			resource.addParameter("names", urlEncode(image));
+			resource.addParameter("names", image);
 		}
 
 		HttpGet get = new HttpGet();
