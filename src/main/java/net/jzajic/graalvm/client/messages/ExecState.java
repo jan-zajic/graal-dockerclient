@@ -66,6 +66,10 @@ public class ExecState {
   @Nullable
   @JsonProperty("ContainerID")
   public String containerId;
+  
+  @Nullable
+  @JsonProperty("Pid")
+  public String Pid; //since 1.25
 
   @JsonCreator
   static ExecState create(
@@ -77,12 +81,14 @@ public class ExecState {
       @JsonProperty("OpenStdout") final Boolean openStdout,
       @JsonProperty("OpenStderr") final Boolean openStderr,
       @JsonProperty("Container") final ContainerInfo containerInfo,
-      @JsonProperty("ContainerID") final String containerId) {
+      @JsonProperty("ContainerID") final String containerId,
+      @JsonProperty("Pid") final String pid) {
     return new ExecState(id, running, exitCode, processConfig, openStdin, openStdout,
-                                   openStderr, containerInfo, containerId);
+                                   openStderr, containerInfo, containerId, pid);
   }
 
-	public ExecState(String id, Boolean running, Long exitCode, ProcessConfig processConfig, Boolean openStdin, Boolean openStdout, Boolean openStderr, ContainerInfo container, String containerId) {
+	public ExecState(String id, Boolean running, Long exitCode, ProcessConfig processConfig, Boolean openStdin, Boolean openStdout, Boolean openStderr, 
+			ContainerInfo container, String containerId, String pid) {
 		super();
 		this.id = id;
 		this.running = running;
@@ -93,6 +99,7 @@ public class ExecState {
 		this.openStderr = openStderr;
 		this.container = container;
 		this.containerId = containerId;
+		this.Pid = pid;
 	}
   
 }
