@@ -2025,25 +2025,6 @@ public interface DockerClient extends Closeable {
     }
 
     /**
-     * Execute in detached mode
-     *
-     * @param detach Whether to detach.
-     * @return ExecCreateParam
-     */
-    public static ExecCreateParam detach(final boolean detach) {
-      return create("Detach", String.valueOf(detach));
-    }
-
-    /**
-     * Execute in detached mode.
-     *
-     * @return ExecCreateParam
-     */
-    public static ExecCreateParam detach() {
-      return detach(true);
-    }
-
-    /**
      * Attach stdin
      *
      * @param attachStdin Whether to attach the standard input which allows user interaction.

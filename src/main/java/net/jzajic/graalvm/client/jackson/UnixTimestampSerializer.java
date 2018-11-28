@@ -34,7 +34,7 @@ import java.util.Date;
  */
 public class UnixTimestampSerializer extends JsonSerializer<Date> {
 
-  private UnixTimestampSerializer() {
+  public UnixTimestampSerializer() {
   }
 
   @Override

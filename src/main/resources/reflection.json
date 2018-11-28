@@ -20,5 +20,13 @@
 	{
 		"name" : "java.util.LinkedHashMap",
 		"allPublicConstructors" : true
+	},
+	{
+		"name" : "net.jzajic.graalvm.client.jackson.UnixTimestampDeserializer",
+		"allPublicConstructors" : true
+	},
+	{
+		"name" : "net.jzajic.graalvm.client.jackson.UnixTimestampSerializer",
+		"allPublicConstructors" : true
 	}
 ]
