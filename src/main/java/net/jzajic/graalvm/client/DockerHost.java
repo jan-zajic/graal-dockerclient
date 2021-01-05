@@ -39,8 +39,7 @@ public class DockerHost {
   /**
    * An interface to be mocked during testing.
    */
-  @VisibleForTesting
-  interface SystemDelegate {
+  public interface SystemDelegate {
 
     String getProperty(String key);
 
@@ -151,13 +150,11 @@ public class DockerHost {
     return certPath;
   }
 
-  @VisibleForTesting
-  static void setSystemDelegate(final SystemDelegate delegate) {
+  public static void setSystemDelegate(final SystemDelegate delegate) {
     systemDelegate = delegate;
   }
 
-  @VisibleForTesting
-  static void restoreSystemDelegate() {
+  public static void restoreSystemDelegate() {
     systemDelegate = defaultSystemDelegate;
   }
 

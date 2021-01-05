@@ -164,8 +164,6 @@ public class Container {
 		this.mounts = mounts;
 	}
 
-
-
 	public  static class PortMapping {
 
     @JsonProperty("PrivatePort")
@@ -196,6 +194,28 @@ public class Container {
 			this.publicPort = publicPort;
 			this.type = type;
 			this.ip = ip;
+		}
+		
+		@Override
+		public String toString() {
+			StringBuilder b = new StringBuilder();
+			if(ip != null) {
+				b.append(ip);
+			}
+			if(b.length() > 0) {
+				b.append(":");
+			}
+			if(publicPort != null && publicPort > 0)
+				b.append(publicPort);
+			if(b.length() > 0) {
+				b.append("->");
+			}
+			if(b.length() > 0) {
+				b.append(privatePort);
+				b.append("/");
+				b.append(type);
+			}
+			return b.toString();
 		}
     
   }

@@ -51,7 +51,7 @@ public interface EntityHandler<T> {
   	return handler.asResponseHandler();
   }
   
-  static final boolean DEBUG = true;
+  static final boolean DEBUG = false;
   
   static <T> ResponseHandler<T> objectResponseHandler(JavaType type) {
   	return new EntityHandler<T>() {

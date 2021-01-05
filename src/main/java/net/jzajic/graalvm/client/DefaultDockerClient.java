@@ -23,16 +23,17 @@ x * docker-client
 
 package net.jzajic.graalvm.client;
 
-import static com.google.common.base.MoreObjects.*;
-import static com.google.common.base.Optional.*;
-import static com.google.common.base.Preconditions.*;
-import static com.google.common.base.Strings.*;
-import static com.google.common.collect.Maps.*;
-import static java.nio.charset.StandardCharsets.*;
-import static java.util.Collections.*;
-import static java.util.concurrent.TimeUnit.*;
-import static net.jzajic.graalvm.client.ObjectMapperProvider.*;
-import static net.jzajic.graalvm.client.VersionCompare.*;
+import static com.google.common.base.MoreObjects.firstNonNull;
+import static com.google.common.base.Optional.fromNullable;
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.base.Strings.isNullOrEmpty;
+import static com.google.common.collect.Maps.newHashMap;
+import static java.nio.charset.StandardCharsets.UTF_8;
+import static java.util.Collections.singletonMap;
+import static java.util.concurrent.TimeUnit.SECONDS;
+import static net.jzajic.graalvm.client.ObjectMapperProvider.objectMapper;
+import static net.jzajic.graalvm.client.VersionCompare.compareVersion;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -108,7 +109,6 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.google.common.base.MoreObjects;
-import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.collect.ArrayListMultimap;
@@ -318,8 +318,8 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 	}
 	// ==========================================================================
 
-	private static final String UNIX_SCHEME = "unix";
-	private static final String NPIPE_SCHEME = "npipe";
+	public static final String UNIX_SCHEME = "unix";
+	public static final String NPIPE_SCHEME = "npipe";
 
 	private static final Logger log = LoggerFactory.getLogger(DefaultDockerClient.class);
 
@@ -412,18 +412,16 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 		this(new Builder().uri(uri));
 	}
 
-	/**
-	 * Create a new client with default configuration.
-	 *
-	 * @param uri
-	 *          The docker rest api uri.
-	 * @param dockerCertificatesStore
-	 *          The certificates to use for HTTPS.
-	 */
-	public DefaultDockerClient(final URI uri, final DockerCertificatesStore dockerCertificatesStore) {
-		this(new Builder().uri(uri).dockerCertificates(dockerCertificatesStore));
-	}
-
+  /**
+   * Create a new client with default configuration.
+   *
+   * @param uri                The docker rest api uri.
+   * @param dockerCertificatesStore The certificates to use for HTTPS.
+   */
+  public DefaultDockerClient(final URI uri, final DockerCertificatesStore dockerCertificatesStore) {
+    this(new Builder().uri(uri).dockerCertificates(dockerCertificatesStore));
+  }
+	
 	/**
 	 * Create a new client using the configuration of the builder.
 	 *
@@ -544,11 +542,9 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 			return bm;
 		} else {
 			final PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager(getSchemeRegistry(builder));
-	
 			// Use all available connections instead of artificially limiting ourselves to 2 per server.
 			cm.setMaxTotal(builder.connectionPoolSize);
 			cm.setDefaultMaxPerRoute(cm.getMaxTotal());
-	
 			return cm;
 		}
 	}
@@ -603,11 +599,6 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 	private void request(final HttpRequestBase req, URIResource resource, ContentType contentType)
 			throws DockerException {
 		request(req, (Class) null, resource, contentType);
-	}
-
-	private <T> T request(final HttpRequestBase req, final GenericType<T> type, URIResource resource)
-			throws DockerException {
-		return request(req, type, resource, (String) null);
 	}
 
 	private <T> T request(final HttpRequestBase req, final GenericType<T> type, URIResource resource, ContentType contentType) {
@@ -2931,7 +2922,10 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 	private URIResource resource() {
 		final URIResource target = new URIResource(uri);
 		if (!isNullOrEmpty(apiVersion)) {
-			return target.addPath(apiVersion);
+			if(apiVersion.contains("v"))
+				return target.addPath(apiVersion);
+			else
+				return target.addPath("v"+apiVersion);
 		}
 		return target;
 	}
@@ -2939,7 +2933,10 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 	private URIResource noTimeoutResource() {
 		final URIResource target = new URIResource(uri);
 		if (!isNullOrEmpty(apiVersion)) {
-			return target.addPath(apiVersion);
+			if(apiVersion.contains("v"))
+				return target.addPath(apiVersion);
+			else
+				return target.addPath("v"+apiVersion);
 		}
 		return target;
 	}
@@ -2984,20 +2981,21 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 			closeQuietly(response);
 		}
 	}
-
-	private void requestAndTail(final HttpRequestBase method, final ProgressHandler handler,
-			final URIResource resource,
-			final HttpEntity entity)
-			throws DockerException {
-		CloseableHttpResponse response = request(method, CloseableHttpResponse.class, resource, entity);
-		tailResponse(method, response, handler);
-	}
 	
 	private void requestAndTail(final HttpRequestBase method, final ProgressHandler handler,
 			final URIResource resource,
 			final ContentType contentType)
 			throws DockerException {
 		CloseableHttpResponse response = request(method, CloseableHttpResponse.class, resource, contentType);
+		int code = response.getStatusLine().getStatusCode();
+		if (code < 200 || code > 299) {
+			throw new DockerRequestException(
+					method.getMethod(),
+						method.getURI(),
+						response.getStatusLine(),
+						message(response),
+						null);
+		}
 		tailResponse(method, response, handler);
 	}
 
@@ -3006,13 +3004,6 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 			final HttpEntity entity)
 			throws DockerException {
 		CloseableHttpResponse response = request(method, CloseableHttpResponse.class, resource, contentType, entity);
-		tailResponse(method, response, handler);
-	}
-
-	private void requestAndTail(final HttpRequestBase method, final ProgressHandler handler,
-			final URIResource resource)
-			throws DockerException {
-		CloseableHttpResponse response = request(method, CloseableHttpResponse.class, resource);
 		int code = response.getStatusLine().getStatusCode();
 		if (code < 200 || code > 299) {
 			throw new DockerRequestException(
@@ -3140,7 +3131,7 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 	 * @throws DockerCertificateException
 	 *           if we could not build a DockerCertificates object
 	 */
-	public static Builder fromEnv() throws DockerCertificateException {
+	public static Builder fromEnv() {
 		final String endpoint = DockerHost.endpointFromEnv();
 		final Path dockerCertPath = Paths.get(
 				firstNonNull(
@@ -3149,11 +3140,12 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 
 		final Builder builder = new Builder();
 
+		/*
 		final Optional<DockerCertificatesStore> certs = DockerCertificates
 				.builder()
 					.dockerCertPath(dockerCertPath)
 					.build();
-
+		*/
 		if (endpoint.startsWith(UNIX_SCHEME + "://")) {
 			builder.uri(endpoint);
 		} else if (endpoint.startsWith(NPIPE_SCHEME + "://")) {
@@ -3162,7 +3154,7 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 			final String stripped = endpoint.replaceAll(".*://", "");
 			final HostAndPort hostAndPort = HostAndPort.fromString(stripped);
 			final String hostText = hostAndPort.getHost();
-			final String scheme = certs.isPresent() ? "https" : "http";
+			final String scheme = /*certs.isPresent() ? "https" :*/ "http";
 
 			final int port = hostAndPort.getPortOrDefault(DockerHost.defaultPort());
 			final String address = isNullOrEmpty(hostText) ? DockerHost.defaultAddress() : hostText;
@@ -3170,9 +3162,10 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 			builder.uri(scheme + "://" + address + ":" + port);
 		}
 
+		/*
 		if (certs.isPresent()) {
 			builder.dockerCertificates(certs.get());
-		}
+		}*/
 
 		return builder;
 	}
@@ -3270,7 +3263,7 @@ public class DefaultDockerClient implements DockerClient, Closeable {
 		public DockerCertificatesStore dockerCertificates() {
 			return dockerCertificatesStore;
 		}
-
+		
 		/**
 		 * Provide certificates to secure the connection to Docker.
 		 *

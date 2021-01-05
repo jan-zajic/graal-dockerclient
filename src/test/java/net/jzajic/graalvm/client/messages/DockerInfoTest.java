@@ -48,8 +48,8 @@ public class DockerInfoTest {
   public void dockerInfoNetworkDesirializerTest_1_23() throws Exception {
     Info info = objectMapper.readValue(fixture("fixtures/1.23/docker_info.json"), Info.class);
     assertThat(info.plugins, is(not(nullValue())));
-    assertThat(info.plugins.networks, is(not(nullValue())));
-    assertThat(info.plugins.networks.size(), is(greaterThan(0)));
+    assertThat(info.plugins.network, is(not(nullValue())));
+    assertThat(info.plugins.network.size(), is(greaterThan(0)));
     assertThat(info.plugins.volumes, is(not(nullValue())));
     assertThat(info.plugins.volumes.size(), is(greaterThan(0)));
   }

@@ -79,6 +79,7 @@ class ProgressStream implements Closeable {
       }
       handler.progress(nextMessage(method, uri));
     }
+    handler.complete();
   }
 
   @Override

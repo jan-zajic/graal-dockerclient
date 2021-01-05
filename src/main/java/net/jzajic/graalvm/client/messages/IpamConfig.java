@@ -60,4 +60,8 @@ public class IpamConfig {
 		this.gateway = gateway;
 	}
   
+	public String getSubnet() {
+		return subnet;
+	}
+	
 }

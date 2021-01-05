@@ -66,4 +66,14 @@ public final class VersionCompare {
       return Integer.signum(vals1.length - vals2.length);
     }
   }
+  
+
+	public static boolean versionLt(String v1, String v2) {
+    return compareVersion(v1, v2) > 0;
+	}
+
+	public static boolean  version_gte(String v1, String v2) {
+    return !versionLt(v1, v2);
+	}
+  
 }

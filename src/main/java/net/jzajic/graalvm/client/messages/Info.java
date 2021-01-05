@@ -326,10 +326,9 @@ public class Info {
 
     /**
      * Return the value of the `network` json path.
-     * todo this method should be renamed to network
      */
     @JsonProperty("Network")
-    public ImmutableList<String> networks;
+    public ImmutableList<String> network;
 
     @JsonCreator
     static Plugins create(
@@ -344,7 +343,7 @@ public class Info {
 		public Plugins(ImmutableList<String> volumes, ImmutableList<String> networks) {
 			super();
 			this.volumes = volumes;
-			this.networks = networks;
+			this.network = networks;
 		}
     
   }

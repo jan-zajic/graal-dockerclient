@@ -20,7 +20,7 @@
 
 package net.jzajic.graalvm.client.exceptions;
 
-public class DockerCertificateException extends Exception {
+public class DockerCertificateException extends RuntimeException {
 
   public DockerCertificateException(final String message) {
     super(message);

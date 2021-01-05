@@ -27,8 +27,9 @@ import net.jzajic.graalvm.client.messages.ProgressMessage;
  * Handler for processing progress messages received from Docker during pull, push and build
  * operations.
  */
+@FunctionalInterface
 public interface ProgressHandler {
-
+	
   /**
    * This method will be called for each progress message received from Docker.
    *
@@ -36,5 +37,11 @@ public interface ProgressHandler {
    * @throws DockerException if a server error occurred (500)
    */
   void progress(ProgressMessage message) throws DockerException;
-
+  
+  /**
+   * This method will be called when there is no other messages received from Docker.
+   *
+   */
+  default void complete() {}
+  
 }

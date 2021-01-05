@@ -28,5 +28,9 @@
 	{
 		"name" : "net.jzajic.graalvm.client.jackson.UnixTimestampSerializer",
 		"allPublicConstructors" : true
+	},
+	{
+		"name" : "java.io.FileNotFoundException",
+		"allPublicConstructors" : true
 	}
 ]

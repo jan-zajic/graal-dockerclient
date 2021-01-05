@@ -23,17 +23,21 @@ package net.jzajic.graalvm.client.messages;
 import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
 import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-
-import com.google.common.collect.ImmutableMap;
-
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+
 import javax.annotation.Nullable;
+
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+
+import net.jzajic.graalvm.client.messages.Container.PortMapping;
 
 
 @JsonAutoDetect(fieldVisibility = ANY, getterVisibility = NONE, setterVisibility = NONE)
@@ -198,4 +202,16 @@ public class NetworkSettings {
 
     NetworkSettings build = new NetworkSettings();
   }
+
+	public ImmutableList<PortMapping> portMapping() {
+		List<PortMapping> list = new ArrayList<Container.PortMapping>(ports.size());
+		for (Entry<String, List<PortBinding>> entry : ports.entrySet()) {
+			List<PortBinding> value = entry.getValue();
+			String[] splitted = entry.getKey().split("/");
+			for (PortBinding portBinding : value) {
+				list.add(PortMapping.create(Integer.valueOf(splitted[0]), Integer.valueOf(portBinding.hostPort), splitted[1], portBinding.hostIp));
+			}
+		}
+		return ImmutableList.copyOf(list);
+	}
 }

@@ -91,6 +91,7 @@ import java.io.InputStream;
 import java.net.URI;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
@@ -3032,6 +3033,6 @@ public interface DockerClient extends Closeable {
    * @param nodeId The id of the node to remove.
    * @param force  Forcefully remove the node.
    */
-  void deleteNode(final String nodeId, final boolean force) throws DockerException,
-                                                                   InterruptedException;
+  void deleteNode(final String nodeId, final boolean force) throws DockerException;
+
 }
